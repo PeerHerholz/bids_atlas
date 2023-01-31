@@ -16,30 +16,24 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: conda-incubator/setup-miniconda@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
       with:
-          activate-environment: bids_atlas
-          use-mamba: false
-          channels: conda-forge, defaults
-          python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
-      shell: bash -l {0}
       run: |
         pip install -r requirements-dev.txt
     - name: Install bids_atlas
-      shell: bash -l {0}
       run: |
         pip install ./
     - name: Test code
-      shell: bash -l {0}
       run: |
         coverage run -m pytest
         coverage report -m
         codecov
         flake8
     - name: Build the docs
-      shell: bash -l {0}
       run: |
         cd docs && make clean html
     - name: GitHub Pages action
