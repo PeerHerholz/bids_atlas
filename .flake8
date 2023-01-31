@@ -13,4 +13,5 @@ exclude =
 max-line-length = 175
 ignore = E203, 
          W503,
-         W293  
+         W293,
+         F841  
