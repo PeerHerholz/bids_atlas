@@ -3,3 +3,4 @@ pandas
 seedir
 nilearn
 templateflow
+importlib_resources
