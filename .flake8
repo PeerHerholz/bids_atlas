@@ -6,7 +6,11 @@ exclude =
     dist,
     versioneer.py,
     bids_atlas/_version.py,
-    docs/source/conf.py
-max-line-length = 115
-# Ignore some style 'errors' produced while formatting by 'black'
-ignore = E203, W503
+    docs/source/conf.py,
+    docs/*,
+    setup.py,
+    examples/*
+max-line-length = 175
+ignore = E203, 
+         W503,
+         W293  
