@@ -2,7 +2,6 @@ import argparse
 import os
 from pathlib import Path
 from bids_atlas.datasets import get_AAL
-from bids import BIDSLayout
 
 
 # define parser to collect required inputs

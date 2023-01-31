@@ -3,9 +3,9 @@ import numpy as np
 import nibabel as nb
 import pathlib
 from nilearn.image import resample_to_img
-import json
 from shutil import copyfile
 import importlib_resources
+
 
 # define function to check output path
 def check_output_path(path, atlas):
@@ -76,7 +76,7 @@ def resample_atlas_target(atlas, target):
     Check if the indicated atlas' resolution fits with that of a target image.
     Here, the AAL atlas and 1mm resolution.
 
-    >>> resample_atlas_target('/home/user/AAL.nii', 
+    >>> resample_atlas_target('/home/user/AAL.nii',
                               '/home/user/tpl-MNI152NLin6Asym_res-01_desc-brain_T1w.nii.gz')
     """
 
