@@ -1,0 +1,6 @@
+﻿bids\_atlas.utils.resample\_atlas\_target
+=========================================
+
+.. currentmodule:: bids_atlas.utils
+
+.. autofunction:: resample_atlas_target

@@ -1,0 +1,6 @@
+﻿bids\_atlas.utils.check\_output\_path
+=====================================
+
+.. currentmodule:: bids_atlas.utils
+
+.. autofunction:: check_output_path

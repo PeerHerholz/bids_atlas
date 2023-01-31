@@ -1,0 +1,6 @@
+﻿bids\_atlas.utils.generate\_json\_sidecar\_file
+===============================================
+
+.. currentmodule:: bids_atlas.utils
+
+.. autofunction:: generate_json_sidecar_file

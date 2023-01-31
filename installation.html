@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Installation &#8212; bids_atlas 0.post1+g8eb7ba8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="BIDS Atlas" href="index.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=teal data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#installation" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="bids_atlas 0.post1+g8eb7ba8 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">BIDS Atlas</span>
+          <span class="md-header-nav__topic"> Installation </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/PeerHerholz/bids_atlas" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    BIDS Atlas
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">bids_atlas 0.post1+g8eb7ba8 documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="bids_atlas 0.post1+g8eb7ba8 documentation" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="bids_atlas 0.post1+g8eb7ba8 documentation">BIDS Atlas</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/PeerHerholz/bids_atlas" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    BIDS Atlas
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Installation </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Installation</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#installation--page-root" class="md-nav__link">Installation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#docker" class="md-nav__link">Docker</a>
+        </li>
+        <li class="md-nav__item"><a href="#singularity" class="md-nav__link">Singularity</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#preparing-a-singularity-image-singularity-version-2-5" class="md-nav__link">Preparing a Singularity image (Singularity version >= 2.5)</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Preparing a Singularity image (Singularity version < 2.5)</a>
+        </li>
+        <li class="md-nav__item"><a href="#running-a-singularity-image" class="md-nav__link">Running a Singularity Image</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bare-metal-version-python-3-8" class="md-nav__link">Bare metal version (Python 3.8+)</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/installation.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="usage.html" class="md-nav__link">Usage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="atlases.html" class="md-nav__link">Atlases</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="auto_examples/index.html" class="md-nav__link">Examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="api_ref.html" class="md-nav__link">Reference API</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-history.html" class="md-nav__link">Release History</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="min_versions.html" class="md-nav__link">Minimum Version of Python and NumPy</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#installation--page-root" class="md-nav__link">Installation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#docker" class="md-nav__link">Docker</a>
+        </li>
+        <li class="md-nav__item"><a href="#singularity" class="md-nav__link">Singularity</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#preparing-a-singularity-image-singularity-version-2-5" class="md-nav__link">Preparing a Singularity image (Singularity version >= 2.5)</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Preparing a Singularity image (Singularity version < 2.5)</a>
+        </li>
+        <li class="md-nav__item"><a href="#running-a-singularity-image" class="md-nav__link">Running a Singularity Image</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bare-metal-version-python-3-8" class="md-nav__link">Bare metal version (Python 3.8+)</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/installation.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="installation">
+<h1 id="installation--page-root">Installation<a class="headerlink" href="#installation--page-root" title="Permalink to this heading">¶</a></h1>
+<p>In general, there are two distinct ways to install and use <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code>:
+either through virtualization/container technology, that is <a class="reference internal" href="#docker">Docker</a> or
+<a class="reference external" href="https://github.com/singularityware/singularity">Singularity</a>, or in a <a class="reference internal" href="#bare-metal-version-python-3-8">Bare metal version (Python 3.8+)</a>.
+Once you are ready to run <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code>, see <a class="reference external" href="./usage.rst">Usage</a> for details.</p>
+<section id="docker">
+<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permalink to this heading">¶</a></h2>
+<p>In order to run <code class="docutils literal notranslate"><span class="pre">`bids_atlas`</span></code> in a Docker container, Docker must be <a class="reference external" href="https://docs.docker.com/engine/installation/">installed</a> on your system.
+Once Docker is installed, you can get <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> through running the following
+command in the terminal of your choice:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>peerherholz/bids_atlas:version
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">version</span></code> is the specific version of <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> you would like to use. For example, if you want
+to employ the <code class="docutils literal notranslate"><span class="pre">latest</span></code>/most up to date <code class="docutils literal notranslate"><span class="pre">version</span></code> you can either run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>peerherholz/bids_atlas:latest
+</pre></div>
+</div>
+<p>or the same command withouth the <code class="docutils literal notranslate"><span class="pre">:latest</span></code> tag, as <code class="docutils literal notranslate"><span class="pre">Docker</span></code> searches for the <code class="docutils literal notranslate"><span class="pre">latest</span></code> tag by default.
+However, as the <code class="docutils literal notranslate"><span class="pre">latest</span></code> version is subject to changes and not necessarily in synch with the most recent <code class="docutils literal notranslate"><span class="pre">numbered</span> <span class="pre">version</span></code>, it
+is recommend to utilize the latter to ensure reproducibility. For example, if you want to employ <code class="docutils literal notranslate"><span class="pre">bids_atlas</span> <span class="pre">v0.0.1</span></code> the command would look as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>peerherholz/bids_atlas:v0.0.1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of November 2020, <a class="reference external" href="https://www.docker.com/pricing/retentionfaq">images older than 6 months will be deleted from Dockerhub</a>. As this is very problematic for everything
+reproducibility and version control, every version of the <code class="docutils literal notranslate"><span class="pre">bids_atlas</span> <span class="pre">images</span></code> are additionally
+uploaded on <a class="reference external" href="https://osf.io/u4g5p/">OSF</a> and can be installed as outlined further below.</p>
+</div>
+<p>After the command finished (it may take a while depending on your internet connection),
+you can run <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/save/bids_atlas:/bids_atlas_dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>peerherholz/bids_atlas:latest<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/bids_atlas_dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>AAL<span class="w"> </span>--resolution<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>Please have a look at the examples under <a class="reference external" href="./usage.rst">Usage</a> to get more information
+about and familiarize yourself with <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code>’s functionality.</p>
+</section>
+<section id="singularity">
+<h2 id="singularity">Singularity<a class="headerlink" href="#singularity" title="Permalink to this heading">¶</a></h2>
+<p>For security reasons, many HPCs (e.g., TACC) do not allow Docker containers, but support
+allow <a class="reference external" href="https://github.com/singularityware/singularity">Singularity</a> containers. Depending
+on the <code class="docutils literal notranslate"><span class="pre">Singularity</span></code> version available to you, there are two options to get <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> as
+a <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code>.</p>
+<section id="preparing-a-singularity-image-singularity-version-2-5">
+<h3 id="preparing-a-singularity-image-singularity-version-2-5">Preparing a Singularity image (Singularity version &gt;= 2.5)<a class="headerlink" href="#preparing-a-singularity-image-singularity-version-2-5" title="Permalink to this heading">¶</a></h3>
+<p>If the version of Singularity on your HPC is modern enough you can create a <code class="docutils literal notranslate"><span class="pre">Singularity</span>
+<span class="pre">image</span></code> directly on the HCP.
+This is as simple as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>/my_images/bids_atlas-&lt;version&gt;.simg<span class="w"> </span>docker://peerherholz/bids_atlas:&lt;version&gt;
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> should be replaced with the desired version of <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> that you want to download.
+For example, if you want to use <code class="docutils literal notranslate"><span class="pre">bids_atlas</span> <span class="pre">v0.0.4</span></code>, the command would look as follows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>/my_images/bids_atlas-v0.0.4.simg<span class="w"> </span>docker://peerherholz/bids_atlas:v0.0.4
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3 id="id3">Preparing a Singularity image (Singularity version &lt; 2.5)<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>In this case, start with a machine (e.g., your personal computer) with <code class="docutils literal notranslate"><span class="pre">Docker</span></code> installed and
+the use <a class="reference external" href="https://github.com/singularityware/docker2singularity">docker2singularity</a> to
+create a <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code>. You will need an active internet connection and some time.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--privileged<span class="w"> </span>-t<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/absolute/path/to/output/folder:/output<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>singularityware/docker2singularity<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>peerherholz/bids_atlas:&lt;version&gt;
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> should be replaced with the desired version of <code class="docutils literal notranslate"><span class="pre">`bids_atlas`</span></code> that you want
+to download and <code class="docutils literal notranslate"><span class="pre">/absolute/path/to/output/folder</span></code> with the absolute path where the created <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code>
+should be stored. Sticking with the example of <code class="docutils literal notranslate"><span class="pre">bids_atlas</span> <span class="pre">v0.0.4</span></code> this would look as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--privileged<span class="w"> </span>-t<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/absolute/path/to/output/folder:/output<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>singularityware/docker2singularity<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>peerherholz/bids_atlas:v0.0.4
+</pre></div>
+</div>
+<p>Beware of the back slashes, expected for Windows systems. The above command would translate to Windows systems as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--privileged<span class="w"> </span>-t<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>D:<span class="se">\h</span>ost<span class="se">\p</span>ath<span class="se">\w</span>here<span class="se">\t</span>o<span class="se">\o</span>utput<span class="se">\s</span>ingularity<span class="se">\i</span>mage:/output<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>singularityware/docker2singularity<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>peerherholz/bids_atlas:&lt;version&gt;
+</pre></div>
+</div>
+<p>You can then transfer the resulting <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code> to the HPC, for example, using <code class="docutils literal notranslate"><span class="pre">scp</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scp peerherholz_bids_atlas&lt;version&gt;.simg &lt;user&gt;@&lt;hcpserver.edu&gt;:/my_images
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> should be replaced with the version of <code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> that you used to create the <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;</span></code>
+with your <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">name</span></code> on the HPC and <code class="docutils literal notranslate"><span class="pre">&lt;hcpserver.edu&gt;</span></code> with the address of the HPC.</p>
+</section>
+<section id="running-a-singularity-image">
+<h3 id="running-a-singularity-image">Running a Singularity Image<a class="headerlink" href="#running-a-singularity-image" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>singularity<span class="w"> </span>run<span class="w"> </span>--cleanenv<span class="w"> </span>/my_images/bids_atlas-&lt;version&gt;.simg<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>bids_atlas_dataset<span class="w"> </span>AAL<span class="w"> </span>--resolution<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to check the name of the created <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">image</span></code> as that might
+diverge based on the method you used. Here and going forward it is assumed that you used <code class="docutils literal notranslate"><span class="pre">Singularity</span> <span class="pre">&gt;=</span> <span class="pre">2.5</span></code>
+and thus <code class="docutils literal notranslate"><span class="pre">bids_atlas-&lt;version&gt;.simg</span></code> instead of <code class="docutils literal notranslate"><span class="pre">peerherholz_bids_atlas&lt;version&gt;.simg</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Singularity by default <a class="reference external" href="https://github.com/singularityware/singularity/issues/445">exposes all environment variables from the host inside
+the container</a>.
+Because of this your host libraries (such as nipype) could be accidentally used
+instead of the ones inside the container - if they are included in <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.
+To avoid such situation we recommend using the <code class="docutils literal notranslate"><span class="pre">--cleanenv</span></code> singularity flag
+in production use. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity run --cleanenv /my_images/bids_atlas-&lt;version&gt;.simg \
+   bids_atlas_dataset AAl --resolution 1
+</pre></div>
+</div>
+<p>or, unset the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> variable before running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset PYTHONPATH; singularity /my_images/bids_atlas-&lt;version&gt;.simg \
+   bids_atlas_dataset AAL --resolution 1
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on how <code class="docutils literal notranslate"><span class="pre">Singularity</span></code> is configured on your cluster it might or might not
+automatically <code class="docutils literal notranslate"><span class="pre">bind</span></code> (<code class="docutils literal notranslate"><span class="pre">mount</span></code> or <code class="docutils literal notranslate"><span class="pre">expose</span></code>) <code class="docutils literal notranslate"><span class="pre">host</span> <span class="pre">folders</span></code> to the container.
+If this is not done automatically you will need to <code class="docutils literal notranslate"><span class="pre">bind</span></code> the necessary folders using
+the <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">&lt;host_folder&gt;:&lt;container_folder&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">Singularity</span></code> argument.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity run --cleanenv -B path/to/bids_atlas/on_host:/bids_atlas \
+    /my_images/bids_atlas-&lt;version&gt;.simg \
+    AAL
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="bare-metal-version-python-3-8">
+<h2 id="bare-metal-version-python-3-8">Bare metal version (Python 3.8+)<a class="headerlink" href="#bare-metal-version-python-3-8" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> is written using Python 3.8 (or above).
+Until the first official version/release will be provided, <cite>bids_atlas</cite>’s bare metal version can be installed by opening a terminal and running the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/peerherholz/bids_atlas.git
+<span class="nb">cd</span><span class="w"> </span>bids_atlas
+pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Please note that you need to have at least <cite>Python 3.8</cite> installed.</p>
+<p>Check your installation with the <code class="docutils literal notranslate"><span class="pre">--version</span></code> argument:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>bids_atlas<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="index.html" title="BIDS Atlas"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> BIDS Atlas </span>
+              </div>
+            </a>
+          
+          
+            <a href="usage.html" title="Usage"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Usage </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2022, Brain Imaging Data Structure.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
