@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# BIDS-Atlas documentation build configuration file, created by
+# bids_atlas documentation build configuration file, created by
 # sphinx-quickstart on Thu Jun 28 12:35:56 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -17,8 +17,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -36,6 +36,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'IPython.sphinxext.ipython_directive',
@@ -43,6 +44,10 @@ extensions = [
     'matplotlib.sphinxext.plot_directive',
     'numpydoc',
     'sphinx_copybutton',
+    'sphinx_gallery.gen_gallery',
+    'sphinxarg.ext',
+    'sphinx_design',
+    'sphinx-jsonschema'
 ]
 
 # Configuration options for plot_directive. See:
@@ -67,9 +72,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'BIDS-Atlas'
-copyright = '2023, BIDS'
-author = 'BIDS'
+project = 'bids_atlas'
+copyright = '2022, Brain Imaging Data Structure'
+author = 'Brain Imaging Data Structure'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -94,7 +99,7 @@ language = "en"
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'default'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
@@ -105,9 +110,11 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-import sphinx_rtd_theme
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+extensions.append('sphinx_material')
+import sphinx_material
+html_theme_path = sphinx_material.html_theme_path()
+html_context = sphinx_material.get_html_context()
+html_theme = 'sphinx_material'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -163,7 +170,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'bids_atlas.tex', 'BIDS-Atlas Documentation',
+    (master_doc, 'bids_atlas.tex', 'bids_atlas Documentation',
      'Contributors', 'manual'),
 ]
 
@@ -173,7 +180,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bids_atlas', 'BIDS-Atlas Documentation',
+    (master_doc, 'bids_atlas', 'bids_atlas Documentation',
      [author], 1)
 ]
 
@@ -184,8 +191,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'bids_atlas', 'BIDS-Atlas Documentation',
-     author, 'bids_atlas', 'A small python package to access publicly available brain atlases in a BIDS-Atlas compliant manner.',
+    (master_doc, 'bids_atlas', 'bids_atlas Documentation',
+     author, 'bids_atlas', 'A small package to implement conversions between BEP-16 (Diffusion Derivatives) compliant datasets and other/existing software outputs.',
      'Miscellaneous'),
 ]
 
@@ -199,4 +206,55 @@ intersphinx_mapping = {
     'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
     'pandas': ('https://pandas.pydata.org/pandas-docs/stable', None),
     'matplotlib': ('https://matplotlib.org/stable', None),
+}
+
+sphinx_gallery_conf = {
+    'examples_dirs': '../../examples',   # path to your example scripts
+    'gallery_dirs': 'auto_examples',  # path to where to save gallery generated output
+    'doc_module': 'bids_atlas',
+    'backreferences_dir': os.path.join('generated', 'modules'),
+    'reference_url': {
+        'bids_atlas': None
+    },
+    'thumbnail_size': (250, 250),
+    'ignore_pattern': r'/wip.*\.py',
+    # path to your example scripts
+    'examples_dirs': ['../../examples'],
+    # path to where to save gallery generated output
+    'gallery_dirs': ['auto_examples'],
+    # specify that examples should be ordered according to filename
+    # directory where function granular galleries are stored
+    'backreferences_dir': 'gen_modules/backreferences',
+    # Modules for which function level galleries are created.  In
+    # this case sphinx_gallery and numpy in a tuple of strings.
+    'doc_module': ('bids_atlas'),
+}
+
+html_theme_options = {
+
+    # Set the name of the project to appear in the navigation.
+    'nav_title': 'BIDS Atlas',
+
+    # Specify a base_url used to generate sitemap.xml. If not
+    # specified, then no sitemap will be built.
+    'base_url': 'https://peerherholz.github.io/bids_atlas',
+
+    # Set the color and the accent color
+    'color_primary': 'teal',
+    'color_accent': 'light-blue',
+
+    # Set the repo location to get a badge with stats
+    'repo_url': 'https://github.com/PeerHerholz/bids_atlas',
+    'repo_name': 'BIDS Atlas',
+
+    # Visible levels of the global TOC; -1 means unlimited
+    'globaltoc_depth': 1,
+    # If False, expand all TOC entries
+    'globaltoc_collapse': False,
+    # If True, show hidden TOC entries
+    'globaltoc_includehidden': False,
+}
+
+html_sidebars = {
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
