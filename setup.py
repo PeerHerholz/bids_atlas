@@ -37,25 +37,26 @@ setup(
     name='bids_atlas',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description="A small python package to access publicly available brain atlases in a BIDS-Atlas compliant manner.",
+    description="A small package to implement conversions between BEP-16 (Diffusion Derivatives) compliant datasets and other/existing software outputs.",
     long_description=readme,
-    author="BIDS",
+    author="Brain Imaging Data Structure",
     author_email='herholz.peer@gmail.com',
     url='https://github.com/peerherholz/bids_atlas',
     python_requires='>={}'.format('.'.join(str(n) for n in min_version)),
     packages=find_packages(exclude=['docs', 'tests']),
     entry_points={
         'console_scripts': [
-            # 'command = some.module:some_function',
+            'bids_atlas = bids_atlas.bids_atlas_cli:run_bids_atlas',
         ],
     },
     include_package_data=True,
+    # package_dir={"": 'data'},
     package_data={
-        'bids_atlas': [
-            # When adding files here, remember to update MANIFEST.in as well,
-            # or else they will not be included in the distribution on PyPI!
-            # 'path/to/data_file',
-        ]
+        '': ['data/metadata_templates/*.json'
+             # When adding files here, remember to update MANIFEST.in as well,
+             # or else they will not be included in the distribution on PyPI!
+             # 'path/to/data_file',
+             ]
     },
     install_requires=requirements,
     license="BSD (3-clause)",
