@@ -112,7 +112,7 @@ def resample_atlas_target(atlas, target):
         return atlas_resampled
 
 
-def generate_json_sidecar_file(atlas_name, filename):
+def generate_json_sidecar_file(atlas_name, filename, version=None):
     """
     Create .json file for the obtained atlas.
 
@@ -122,6 +122,8 @@ def generate_json_sidecar_file(atlas_name, filename):
         The name of the atlas.
     filename : str
         The file naming pattern of the atlas.
+    version : str
+        The version of the atlas.
 
     Returns
     -------
@@ -138,12 +140,25 @@ def generate_json_sidecar_file(atlas_name, filename):
     if atlas_name == 'AAL':
 
         # get metadata for atlas
-        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-AAL_desg.json')
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-AAL_dseg.json')
 
     elif atlas_name == 'Destrieux':
 
         # get metadata for atlas
-        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Destrieux_desg.json')
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Destrieux_dseg.json')
+    
+    elif atlas_name == 'HarvardOxford':
+
+        # get version-specific metadata
+        if version == 'dseg':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_dseg.json')
+
+        elif version == 'pseg':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_pseg.json')
 
     # copy the atlas to the required directory
     copyfile(json_metadata, filename)
