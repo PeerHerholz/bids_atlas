@@ -135,7 +135,7 @@ and thus easily be loaded, plotted, or utilized within an analysis.
  .. code-block:: none
 
 
-    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f8245063c10>
+    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f9b7695b370>
 
 
 
@@ -284,17 +284,17 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
     {
         "Name": "Automated Anatomical Labeling Atlas - SPM12 version",
-        "Description": "PLEASE ADD",
+        "Description": "AAl atlas for SPM 12. Notes: This atlas is the result of an automated anatomical parcellation\nof the spatially normalized single-subject high-resolution T1 volume provided by the\nMontreal Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans. Med. Imag. 17, 463-468, PubMed).\nUsing this parcellation method, three procedures to perform the automated anatomical labeling of functional\nstudies are proposed: (1) labeling of an extremum defined by a set of coordinates, (2) percentage of voxels belonging\nto each of the AVOI intersected by a sphere centered by a set of coordinates,\nand (3) percentage of voxels belonging to each of the AVOI intersected by an activated cluster.",
         "BIDSVersion": "PLEASE ADD",
         "Curators": "PLEASE ADD",
         "HowToAcknowledge": "PLEASE ADD",
         "SourceDatasetsURLs": "PLEASE ADD",
-        "License": "PLEASE ADD",
+        "License": "Unknown",
         "Funding": "PLEASE ADD",
-        "ReferencesAndLinks": "PLEASE ADD",
-        "Species": "PLEASE ADD",
+        "ReferencesAndLinks": "http://www.gin.cnrs.fr/AAL-217?lang",
+        "Species": "Homo sapiens",
         "DerivedFrom": "PLEASE ADD",
-        "LevelType": "PLEASE ADD",
+        "LevelType": "Single-subject",
         "SpecialReference": "PLEASE ADD"
     }
 
@@ -304,7 +304,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.889 seconds)
+   **Total running time of the script:** ( 0 minutes  4.142 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_AAL_example.py:

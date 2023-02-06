@@ -25,6 +25,7 @@ Reference API
    bids_atlas.datasets.get_AAL
    bids_atlas.datasets.get_Destrieux
    bids_atlas.datasets.get_HarvardOxford
+   bids_atlas.datasets.get_Talairach
 
 .. _ref_utils:
 

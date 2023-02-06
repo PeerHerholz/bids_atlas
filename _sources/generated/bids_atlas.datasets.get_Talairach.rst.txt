@@ -1,0 +1,6 @@
+﻿bids\_atlas.datasets.get\_Talairach
+===================================
+
+.. currentmodule:: bids_atlas.datasets
+
+.. autofunction:: get_Talairach

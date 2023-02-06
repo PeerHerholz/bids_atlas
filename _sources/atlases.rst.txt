@@ -5,7 +5,7 @@ Atlases
 ``bids_atlas`` comes with support of a large collection of commonly used publicly available ``atlases``.
 In the following you can find a respective list, indicating the atlas, the function to download it and its metadata.
 
-.. dropdown::           AAL 
+.. dropdown::           AAL
 
     .. raw:: html
         :file: _static/AAL_viewer.html 
@@ -44,7 +44,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     "SpecialReference": "PLEASE ADD"    
                 }
 
-.. dropdown::           Destrieux 
+.. dropdown::           Destrieux
 
     .. raw:: html
         :file: _static/Destrieux_viewer.html 
@@ -85,7 +85,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     "SpecialReference": "PLEASE ADD"
                 }
 
-.. dropdown::           Harvard-Oxford 
+.. dropdown::           Harvard-Oxford
 
     .. dropdown::           deterministic version
 
@@ -164,3 +164,205 @@ In the following you can find a respective list, indicating the atlas, the funct
                             "LevelType": "PLEASE ADD",
                             "SpecialReference": "PLEASE ADD"
                         }
+
+.. dropdown::           Talairach 
+
+    .. dropdown::           Gyrus level
+
+        .. raw:: html
+            :file: _static/Talairach_gyrus_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_talairach
+                        AAL_atlas = get_HarvardOxford(level='gyrus')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Talairach Deterministic atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "Unknown",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                                                "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+                            "Species": "Homo sapiens",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }
+
+    .. dropdown::           Hemisphere level
+
+        .. raw:: html
+            :file: _static/Talairach_hemisphere_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_talairach
+                        AAL_atlas = get_HarvardOxford(level='hemisphere')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Talairach Deterministic atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "Unknown",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                                                "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+                            "Species": "Homo sapiens",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }
+
+    .. dropdown::           Lobe level
+
+        .. raw:: html
+            :file: _static/Talairach_lobe_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_talairach
+                        AAL_atlas = get_HarvardOxford(level='lobe')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Talairach Deterministic atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "Unknown",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                                                "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+                            "Species": "Homo sapiens",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }
+
+    .. dropdown::           Tissue level
+
+        .. raw:: html
+            :file: _static/Talairach_tissue_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_talairach
+                        AAL_atlas = get_HarvardOxford(level='tissue')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Talairach Deterministic atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "Unknown",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                                                "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+                            "Species": "Homo sapiens",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }
+
+    .. dropdown::           BA level
+
+        .. raw:: html
+            :file: _static/Talairach_ba_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_talairach
+                        AAL_atlas = get_HarvardOxford(level='gyrus')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Talairach Deterministic atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "Unknown",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                                                "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+                            "Species": "Homo sapiens",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }                    

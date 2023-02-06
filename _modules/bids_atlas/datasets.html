@@ -46,7 +46,7 @@
   
   
   
-    <title>bids_atlas.datasets &#8212; bids_atlas 0.post1+g3240cc3 documentation</title>
+    <title>bids_atlas.datasets &#8212; bids_atlas 0.post1+g16621b6 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="bids_atlas 0.post1+g3240cc3 documentation"
+        <a href="../../index.html" title="bids_atlas 0.post1+g16621b6 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">bids_atlas 0.post1+g3240cc3 documentation</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">bids_atlas 0.post1+g16621b6 documentation</a></li>
           <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Module code</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="bids_atlas 0.post1+g3240cc3 documentation" class="md-nav__button md-logo">
+    <a href="../../index.html" title="bids_atlas 0.post1+g16621b6 documentation" class="md-nav__button md-logo">
       
         <img src="../../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../index.html"
-       title="bids_atlas 0.post1+g3240cc3 documentation">BIDS Atlas</a>
+       title="bids_atlas 0.post1+g16621b6 documentation">BIDS Atlas</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/PeerHerholz/bids_atlas" title="Go to repository" class="md-source" data-md-source="github">
@@ -481,11 +481,11 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">'The following files were downloaded at </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outpath</span><span class="p">)</span>
     <span class="n">sd</span><span class="o">.</span><span class="n">seedir</span><span class="p">(</span><span class="n">outpath</span><span class="p">)</span>
 
-    <span class="n">aal_atlas_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'AtlasImage'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">),</span>
-                      <span class="s1">'AtlasTSV'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
-                      <span class="s1">'AtlasJson'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">))}</span>
+    <span class="n">destrieux_atlas_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'AtlasImage'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">),</span>
+                            <span class="s1">'AtlasTSV'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
+                            <span class="s1">'AtlasJson'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">))}</span>
 
-    <span class="k">return</span> <span class="n">aal_atlas_dict</span></div>
+    <span class="k">return</span> <span class="n">destrieux_atlas_dict</span></div>
 
 
 <span class="c1"># define function to get the Harvard-Oxford atlas</span>
@@ -584,11 +584,135 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">'The following files were downloaded at </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outpath</span><span class="p">)</span>
     <span class="n">sd</span><span class="o">.</span><span class="n">seedir</span><span class="p">(</span><span class="n">outpath</span><span class="p">)</span>
 
-    <span class="n">aal_atlas_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'AtlasImage'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">),</span>
-                      <span class="s1">'AtlasTSV'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
-                      <span class="s1">'AtlasJson'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">))}</span>
+    <span class="n">ho_atlas_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'AtlasImage'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">),</span>
+                     <span class="s1">'AtlasTSV'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
+                     <span class="s1">'AtlasJson'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">))}</span>
 
-    <span class="k">return</span> <span class="n">aal_atlas_dict</span></div>
+    <span class="k">return</span> <span class="n">ho_atlas_dict</span></div>
+
+
+<span class="c1"># define function to get the Harvard-Oxford atlas</span>
+<div class="viewcode-block" id="get_Talairach"><a class="viewcode-back" href="../../generated/bids_atlas.datasets.get_Talairach.html#bids_atlas.datasets.get_Talairach">[docs]</a><span class="k">def</span> <span class="nf">get_Talairach</span><span class="p">(</span><span class="n">target_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">'gyrus'</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Download the Talairach atlas in specified target space and resolution,</span>
+<span class="sd">    providing it in a BIDS-Atlas compliant manner.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    target_space : string</span>
+<span class="sd">        Target space the atlas should be provided in. If None, the atlas</span>
+<span class="sd">        will be provided in MNI152NLin6Asym. Default = None.</span>
+<span class="sd">    resolution : string</span>
+<span class="sd">        Resolution the atlas should be provided in. If None, the atlas</span>
+<span class="sd">        will be provided in 2mm resolution. Default = None.</span>
+<span class="sd">    level : string</span>
+<span class="sd">        Level the atlas should be provided in. If None, the atlas</span>
+<span class="sd">        will be provided based on gyri. Default = 'gyrus'.</span>
+<span class="sd">    path : string</span>
+<span class="sd">        Path where the atlas will be saved. If None, the file will be saved</span>
+<span class="sd">        in the current working directory. Default = None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict : Dictionary</span>
+<span class="sd">        A Dictionary containing the paths to the atlas image, tsv and json files.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Download the Talairach atlas to the current directory.</span>
+
+<span class="sd">    &gt;&gt;&gt; get_Talairach()</span>
+
+<span class="sd">    Download the atlas to a specific path, e.g. the user's Desktop</span>
+<span class="sd">    and indicate a resolution.</span>
+
+<span class="sd">    &gt;&gt;&gt; get_Talairach(resolution=1, path='/home/user/Desktop')</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># check input arguments and if not provided assign default</span>
+    <span class="c1"># target_space will be actively supported soon</span>
+    <span class="k">if</span> <span class="n">target_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">target_space</span> <span class="o">=</span> <span class="s1">'MNI152NLin6Asym'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Spatial transformations of atlases will soon be supported.'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'At the moment only MNI152NLin6Asym is available.'</span><span class="p">)</span>
+        <span class="n">target_space</span> <span class="o">=</span> <span class="s1">'MNI152NLin6Asym'</span>
+    <span class="k">if</span> <span class="n">resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resolution</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">curdir</span>
+
+    <span class="c1"># generate the output path</span>
+    <span class="n">outpath</span> <span class="o">=</span> <span class="n">check_output_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">atlas</span><span class="o">=</span><span class="s1">'Talairach'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">'gyrus'</span><span class="p">:</span>
+        <span class="c1"># get the Talairach atlas as provided by nilearn, deterministic version</span>
+        <span class="n">talairach_atlas</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_talairach</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="s1">'gyrus'</span><span class="p">)</span>
+        <span class="c1"># generate the filename pattern</span>
+        <span class="n">atlas_file_name</span> <span class="o">=</span> <span class="s1">'atlas-Talairach_res-</span><span class="si">%s</span><span class="s1">_desc-gyrus_dseg.nii.gz'</span> <span class="o">%</span> <span class="n">resolution</span>
+
+        <span class="c1"># generate the atlas json sidecar file</span>
+        <span class="n">generate_json_sidecar_file</span><span class="p">(</span><span class="s1">'Talairach'</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">)),</span> <span class="n">version</span><span class="o">=</span><span class="s1">'gyrus'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">'hemisphere'</span><span class="p">:</span>
+        <span class="c1"># get the Talairach atlas as provided by nilearn, deterministic version</span>
+        <span class="n">talairach_atlas</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_talairach</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="s1">'hemisphere'</span><span class="p">)</span>
+        <span class="c1"># generate the filename pattern</span>
+        <span class="n">atlas_file_name</span> <span class="o">=</span> <span class="s1">'atlas-Talairach_res-</span><span class="si">%s</span><span class="s1">_desc-hemisphere_dseg.nii.gz'</span> <span class="o">%</span> <span class="n">resolution</span>
+
+        <span class="c1"># generate the atlas json sidecar file</span>
+        <span class="n">generate_json_sidecar_file</span><span class="p">(</span><span class="s1">'Talairach'</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">)),</span> <span class="n">version</span><span class="o">=</span><span class="s1">'hemisphere'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">'lobe'</span><span class="p">:</span>
+        <span class="c1"># get the Talairach atlas as provided by nilearn, deterministic version</span>
+        <span class="n">talairach_atlas</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_talairach</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="s1">'lobe'</span><span class="p">)</span>
+        <span class="c1"># generate the filename pattern</span>
+        <span class="n">atlas_file_name</span> <span class="o">=</span> <span class="s1">'atlas-Talairach_res-</span><span class="si">%s</span><span class="s1">_desc-lobe_dseg.nii.gz'</span> <span class="o">%</span> <span class="n">resolution</span>
+
+        <span class="c1"># generate the atlas json sidecar file</span>
+        <span class="n">generate_json_sidecar_file</span><span class="p">(</span><span class="s1">'Talairach'</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">)),</span> <span class="n">version</span><span class="o">=</span><span class="s1">'lobe'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">'tissue'</span><span class="p">:</span>
+        <span class="c1"># get the Talairach atlas as provided by nilearn, deterministic version</span>
+        <span class="n">talairach_atlas</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_talairach</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="s1">'tissue'</span><span class="p">)</span>
+        <span class="c1"># generate the filename pattern</span>
+        <span class="n">atlas_file_name</span> <span class="o">=</span> <span class="s1">'atlas-Talairach_res-</span><span class="si">%s</span><span class="s1">_desc-tissue_dseg.nii.gz'</span> <span class="o">%</span> <span class="n">resolution</span>
+
+        <span class="c1"># generate the atlas json sidecar file</span>
+        <span class="n">generate_json_sidecar_file</span><span class="p">(</span><span class="s1">'Talairach'</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">)),</span> <span class="n">version</span><span class="o">=</span><span class="s1">'tissue'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">'ba'</span><span class="p">:</span>
+        <span class="c1"># get the Talairach atlas as provided by nilearn, deterministic version</span>
+        <span class="n">talairach_atlas</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_talairach</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="s1">'ba'</span><span class="p">)</span>
+        <span class="c1"># generate the filename pattern</span>
+        <span class="n">atlas_file_name</span> <span class="o">=</span> <span class="s1">'atlas-Talairach_res-</span><span class="si">%s</span><span class="s1">_desc-ba_dseg.nii.gz'</span> <span class="o">%</span> <span class="n">resolution</span>
+
+        <span class="c1"># generate the atlas json sidecar file</span>
+        <span class="n">generate_json_sidecar_file</span><span class="p">(</span><span class="s1">'Talairach'</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">)),</span> <span class="n">version</span><span class="o">=</span><span class="s1">'ba'</span><span class="p">)</span>
+
+    <span class="c1"># save the atlas at the indicated path with the generated filename</span>
+    <span class="n">nb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">talairach_atlas</span><span class="o">.</span><span class="n">maps</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">))</span>
+
+    <span class="c1"># create the atlas .tsv file</span>
+    <span class="n">talairach_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Index'</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">talairach_atlas</span><span class="o">.</span><span class="n">labels</span><span class="p">)],</span>
+                                 <span class="s1">'Label'</span><span class="p">:</span> <span class="p">[</span><span class="n">label</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">talairach_atlas</span><span class="o">.</span><span class="n">labels</span><span class="p">)],</span>
+                                 <span class="s1">'Hemisphere'</span><span class="p">:</span> <span class="s1">'bilat'</span>
+                                 <span class="p">})</span>
+    
+    <span class="c1"># save the atlas .tsv file</span>
+    <span class="n">talairach_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
+                        <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># print a message indicating what files were downloaded where</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'The following files were downloaded at </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outpath</span><span class="p">)</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">seedir</span><span class="p">(</span><span class="n">outpath</span><span class="p">)</span>
+
+    <span class="n">talairach_atlas_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'AtlasImage'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="p">),</span>
+                            <span class="s1">'AtlasTSV'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.tsv'</span><span class="p">)),</span>
+                            <span class="s1">'AtlasJson'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">atlas_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.nii.gz'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">))}</span>
+
+    <span class="k">return</span> <span class="n">talairach_atlas_dict</span></div>
 </pre></div>
 
           </article>
