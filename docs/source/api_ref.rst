@@ -23,6 +23,7 @@ Reference API
    :toctree: generated/
 
    bids_atlas.datasets.get_AAL
+   bids_atlas.datasets.get_Destrieux
 
 .. _ref_utils:
 
