@@ -135,7 +135,7 @@ and thus easily be loaded, plotted, or utilized within an analysis.
  .. code-block:: none
 
 
-    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f9fd0525610>
+    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f46e1aadb80>
 
 
 
@@ -304,7 +304,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.453 seconds)
+   **Total running time of the script:** ( 0 minutes  3.830 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_AAL_example.py:

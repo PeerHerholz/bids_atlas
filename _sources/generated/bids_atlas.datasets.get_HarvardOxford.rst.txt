@@ -1,0 +1,6 @@
+﻿bids\_atlas.datasets.get\_HarvardOxford
+=======================================
+
+.. currentmodule:: bids_atlas.datasets
+
+.. autofunction:: get_HarvardOxford
