@@ -1,5 +1,5 @@
 import os
-from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford
+from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach
 from pathlib import Path
 
 
@@ -38,5 +38,18 @@ def test_download_HarvardOxford():
     expected_files = ['atlas-HarvardOxford_res-2_desc-thr25_dseg.json',
                       'atlas-HarvardOxford_res-2_desc-thr25_dseg.nii.gz',
                       'atlas-HarvardOxford_res-2_desc-thr25_dseg.tsv',
+                      ]
+    assert actual_files == expected_files
+
+
+def test_download_Talairach():
+
+    # test if all files are downloaded
+
+    Talairach_atlas = get_Talairach()
+    actual_files = sorted(os.listdir(Path(Talairach_atlas['AtlasImage']).parents[0]))
+    expected_files = ['atlas-Talairach_res-2_desc-gyrus_dseg.json',
+                      'atlas-Talairach_res-2_desc-gyrus_dseg.nii.gz',
+                      'atlas-Talairach_res-2_desc-gyrus_dseg.tsv',
                       ]
     assert actual_files == expected_files

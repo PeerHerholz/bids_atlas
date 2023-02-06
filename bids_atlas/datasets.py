@@ -187,11 +187,11 @@ def get_Destrieux(target_space=None, resolution=None, path=None):
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    aal_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                      'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                      'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    destrieux_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
+                            'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                            'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
 
-    return aal_atlas_dict
+    return destrieux_atlas_dict
 
 
 # define function to get the Harvard-Oxford atlas
@@ -290,8 +290,132 @@ def get_HarvardOxford(target_space=None, resolution=None, type='dseg', threshold
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    aal_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                      'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                      'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    ho_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
+                     'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                     'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
 
-    return aal_atlas_dict
+    return ho_atlas_dict
+
+
+# define function to get the Harvard-Oxford atlas
+def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
+    """
+    Download the Talairach atlas in specified target space and resolution,
+    providing it in a BIDS-Atlas compliant manner.
+
+    Parameters
+    ----------
+    target_space : string
+        Target space the atlas should be provided in. If None, the atlas
+        will be provided in MNI152NLin6Asym. Default = None.
+    resolution : string
+        Resolution the atlas should be provided in. If None, the atlas
+        will be provided in 2mm resolution. Default = None.
+    level : string
+        Level the atlas should be provided in. If None, the atlas
+        will be provided based on gyri. Default = 'gyrus'.
+    path : string
+        Path where the atlas will be saved. If None, the file will be saved
+        in the current working directory. Default = None.
+
+    Returns
+    -------
+    dict : Dictionary
+        A Dictionary containing the paths to the atlas image, tsv and json files.
+
+    Examples
+    --------
+    Download the Talairach atlas to the current directory.
+
+    >>> get_Talairach()
+
+    Download the atlas to a specific path, e.g. the user's Desktop
+    and indicate a resolution.
+
+    >>> get_Talairach(resolution=1, path='/home/user/Desktop')
+    """
+
+    # check input arguments and if not provided assign default
+    # target_space will be actively supported soon
+    if target_space is None:
+        target_space = 'MNI152NLin6Asym'
+    else:
+        print('Spatial transformations of atlases will soon be supported.')
+        print('At the moment only MNI152NLin6Asym is available.')
+        target_space = 'MNI152NLin6Asym'
+    if resolution is None:
+        resolution = 2
+    if path is None:
+        path = os.curdir
+
+    # generate the output path
+    outpath = check_output_path(path, atlas='Talairach')
+
+    if level == 'gyrus':
+        # get the Talairach atlas as provided by nilearn, deterministic version
+        talairach_atlas = datasets.fetch_atlas_talairach(level_name='gyrus')
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Talairach_res-%s_desc-gyrus_dseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Talairach',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='gyrus')
+    elif level == 'hemisphere':
+        # get the Talairach atlas as provided by nilearn, deterministic version
+        talairach_atlas = datasets.fetch_atlas_talairach(level_name='hemisphere')
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Talairach_res-%s_desc-hemisphere_dseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Talairach',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='hemisphere')
+    elif level == 'lobe':
+        # get the Talairach atlas as provided by nilearn, deterministic version
+        talairach_atlas = datasets.fetch_atlas_talairach(level_name='lobe')
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Talairach_res-%s_desc-lobe_dseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Talairach',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='lobe')
+    elif level == 'tissue':
+        # get the Talairach atlas as provided by nilearn, deterministic version
+        talairach_atlas = datasets.fetch_atlas_talairach(level_name='tissue')
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Talairach_res-%s_desc-tissue_dseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Talairach',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='tissue')
+    elif level == 'ba':
+        # get the Talairach atlas as provided by nilearn, deterministic version
+        talairach_atlas = datasets.fetch_atlas_talairach(level_name='ba')
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Talairach_res-%s_desc-ba_dseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Talairach',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='ba')
+
+    # save the atlas at the indicated path with the generated filename
+    nb.save(talairach_atlas.maps, os.path.join(outpath, atlas_file_name))
+
+    # create the atlas .tsv file
+    talairach_df = pd.DataFrame({'Index': [i for i, label in enumerate(talairach_atlas.labels)],
+                                 'Label': [label for i, label in enumerate(talairach_atlas.labels)],
+                                 'Hemisphere': 'bilat'
+                                 })
+    
+    # save the atlas .tsv file
+    talairach_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                        index=False)
+
+    # print a message indicating what files were downloaded where
+    print('The following files were downloaded at %s' % outpath)
+    sd.seedir(outpath)
+
+    talairach_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
+                            'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                            'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+
+    return talairach_atlas_dict

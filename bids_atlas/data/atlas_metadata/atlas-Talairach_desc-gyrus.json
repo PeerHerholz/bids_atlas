@@ -1,0 +1,16 @@
+{
+    "Name": "Talairach Deterministic atlas",
+    "Description": "PLEASE ADD",
+    "BIDSVersion": "PLEASE ADD",
+    "Curators": "PLEASE ADD",
+    "HowToAcknowledge": "PLEASE ADD",
+    "SourceDatasetsURLs": "PLEASE ADD",
+    "License": "Unknown",
+    "Funding": "PLEASE ADD",
+    "ReferencesAndLinks": ["https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0193%28200007%2910%3A3%3C120%3A%3AAID-HBM30%3E3.0.CO%3B2-8",
+                           "https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0193%281997%295%3A4%3C238%3A%3AAID-HBM6%3E3.0.CO%3B2-4"],
+    "Species": "Homo sapiens",
+    "DerivedFrom": "PLEASE ADD",
+    "LevelType": "PLEASE ADD",
+    "SpecialReference": "PLEASE ADD"
+}

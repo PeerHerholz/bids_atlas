@@ -160,5 +160,33 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
             # get metadata for atlas
             json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_pseg.json')
 
+    elif atlas_name == 'Talairach':
+
+        # get version-specific metadata
+        if version == 'gyrus':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-gyrus.json')
+
+        elif version == 'hemisphere':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-hemisphere.json')
+
+        elif version == 'lobe':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-lobe.json')
+
+        elif version == 'tissue':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-tissue.json')
+
+        elif version == 'ba':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-ba.json')
+
     # copy the atlas to the required directory
     copyfile(json_metadata, filename)

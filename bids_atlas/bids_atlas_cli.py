@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford
+from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach
 
 
 # define parser to collect required inputs
@@ -24,6 +24,8 @@ def get_parser():
                         choices=['pseg', 'dseg'])
     parser.add_argument('--threshold', help='Threshold the atlas should be provided in. (Only for Harvard-Oxford)',
                         choices=['25', '50'])
+    parser.add_argument('--level', help='Level the atlas should be provided in. (Only for Talairach)',
+                        choices=['gyrus', 'hemisphere', 'lobe', 'tissue', 'ba'])
     parser.add_argument('-v', '--version', action='version',
                         version='BIDS-Atlas version {}'.format(__version__))
 
@@ -61,6 +63,12 @@ def run_bids_atlas():
         # download the Harvard-Oxford atlas and set user-defined input
         get_HarvardOxford(target_space='MNI152NLin6Asym', type=args.type, threshold=args.threshold,
                           resolution=args.resolution, path=args.bids_atlas_dir)
+
+    elif args.atlas == 'Talairach':
+
+        # download the Talairach atlas and set user-defined input
+        get_Talairach(target_space='MNI152NLin6Asym', level=args.level,
+                      resolution=args.resolution, path=args.bids_atlas_dir)
 
 
 # run the CLI
