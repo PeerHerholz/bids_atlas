@@ -8,7 +8,7 @@ In the following you can find a respective list, indicating the atlas, the funct
 .. dropdown::           AAL 
 
     .. raw:: html
-        :file: _static/AAL_viewer.html
+        :file: _static/AAL_viewer.html 
    
    .. grid:: 2
     :outline:
@@ -47,7 +47,7 @@ In the following you can find a respective list, indicating the atlas, the funct
 .. dropdown::           Destrieux 
 
     .. raw:: html
-        :file: _static/Destrieux_viewer.html
+        :file: _static/Destrieux_viewer.html 
    
    .. grid:: 2
     :outline:
@@ -85,7 +85,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     "SpecialReference": "PLEASE ADD"
                 }
 
-.. dropdown::           Destrieux 
+.. dropdown::           Harvard-Oxford 
 
     .. dropdown::           deterministic version
 
