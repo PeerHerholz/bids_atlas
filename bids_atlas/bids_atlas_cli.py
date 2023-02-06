@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from bids_atlas.datasets import get_AAL
+from bids_atlas.datasets import get_AAL, get_Destrieux
 
 
 # define parser to collect required inputs
@@ -13,7 +13,7 @@ def get_parser():
     parser = argparse.ArgumentParser(description='a CLI for accessing commonly used publicly available atlases in a BIDS-Atlas compliant form')
     parser.add_argument('bids_atlas_dir', action='store', type=Path, help='The directory where the atlas should be stored.')
     parser.add_argument('atlas', help='Atlas to download in a BIDS-Atlas compliant form.',
-                        choices=['AAL', 'Schaefer100'])
+                        choices=['AAL', 'Destrieux', 'Schaefer100'])
     parser.add_argument('--target_space',
                         help='Target space the atlas should be provided in.'
                         'Currently, only MNI152NLin6Asym is available.',
@@ -41,9 +41,16 @@ def run_bids_atlas():
     else:
         exec_env = 'local'
 
+    # check which atlas should be downloaded and run the respective function
     if args.atlas == 'AAL':
 
+        # download the AAL atlas and set user-defined input
         get_AAL(target_space='MNI152NLin6Asym', resolution=args.resolution, path=args.bids_atlas_dir)
+
+    elif args.atlas == 'Destrieux':
+
+        # download the Destrieux atlas and set user-defined input
+        get_Destrieux(target_space='MNI152NLin6Asym', resolution=args.resolution, path=args.bids_atlas_dir)
 
 
 # run the CLI

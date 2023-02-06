@@ -140,5 +140,10 @@ def generate_json_sidecar_file(atlas_name, filename):
         # get metadata for atlas
         json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-AAL_desg.json')
 
-        # copy the atlas to the required directory
-        copyfile(json_metadata, filename)
+    elif atlas_name == 'Destrieux':
+
+        # get metadata for atlas
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Destrieux_desg.json')
+
+    # copy the atlas to the required directory
+    copyfile(json_metadata, filename)
