@@ -72,14 +72,6 @@ the paths to atlas image, .tsv and .json files.
 
  .. code-block:: none
 
-
-    Dataset created in /home/runner/nilearn_data/aal_SPM12
-
-    Downloading data from http://www.gin.cnrs.fr/AAL_files/aal_for_SPM12.tar.gz ...
-     ...done. (4 seconds, 0 min)
-    Extracting data from /home/runner/nilearn_data/aal_SPM12/9845813e2300e5b614a9dd2713e13445/aal_for_SPM12.tar.gz..... done.
-    Downloading https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-02_desc-brain_T1w.nii.gz
-      0%|          | 0.00/429k [00:00<?, ?B/s]     12%|#2        | 52.2k/429k [00:00<00:01, 355kB/s]     53%|#####2    | 226k/429k [00:00<00:00, 841kB/s]     100%|##########| 429k/429k [00:00<00:00, 1.42MB/s]
     checking if atlas needs to be resampled
     atlas will be resampled to target
     Atlas will be saved to /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/AAL
@@ -143,7 +135,7 @@ and thus easily be loaded, plotted, or utilized within an analysis.
  .. code-block:: none
 
 
-    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7fa794c8aca0>
+    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f441ca61be0>
 
 
 
@@ -312,7 +304,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.257 seconds)
+   **Total running time of the script:** ( 0 minutes  3.970 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_AAL_example.py:

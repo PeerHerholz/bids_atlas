@@ -1,0 +1,6 @@
+﻿bids\_atlas.datasets.get\_Destrieux
+===================================
+
+.. currentmodule:: bids_atlas.datasets
+
+.. autofunction:: get_Destrieux
