@@ -3,7 +3,7 @@ from ..datasets import get_AAL, get_Destrieux
 from pathlib import Path
 
 
-def get_AAL():
+def test_download_AAL():
 
     # test if all files are downloaded
 
@@ -16,12 +16,12 @@ def get_AAL():
     assert actual_files == expected_files
 
 
-def get_Destrieux():
+def test_download_Destrieux():
 
     # test if all files are downloaded
 
-    get_Destrieux = get_Destrieux()
-    actual_files = sorted(os.listdir(Path(get_Destrieux['AtlasImage']).parents[0]))
+    Destrieux_atlas = get_Destrieux()
+    actual_files = sorted(os.listdir(Path(Destrieux_atlas['AtlasImage']).parents[0]))
     expected_files = ['atlas-Destrieux_res-2_dseg.json',
                       'atlas-Destrieux_res-2_dseg.nii.gz',
                       'atlas-Destrieux_res-2_dseg.tsv',
