@@ -419,3 +419,106 @@ def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
                             'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
 
     return talairach_atlas_dict
+
+
+# define function to get the Harvard-Oxford atlas
+def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None, path=None):
+    """
+    Download the Juelich atlas in specified target space and resolution,
+    providing it in a BIDS-Atlas compliant manner.
+
+    Parameters
+    ----------
+    target_space : string
+        Target space the atlas should be provided in. If None, the atlas
+        will be provided in MNI152NLin6Asym. Default = None.
+    resolution : string
+        Resolution the atlas should be provided in. If None, the atlas
+        will be provided in 2mm resolution. Default = None.
+    type : string
+        Type the atlas should be provided in. If None, the atlas
+        will be provided as dseg. Default = 'dseg'.
+    threshold : string
+        Threshold the atlas should be provided in. If None, the threshold
+        will be set as 25. Default = '25'.
+    path : string
+        Path where the atlas will be saved. If None, the file will be saved
+        in the current working directory. Default = None.
+
+    Returns
+    -------
+    dict : Dictionary
+        A Dictionary containing the paths to the atlas image, tsv and json files.
+
+    Examples
+    --------
+    Download the Juelich atlas to the current directory.
+
+    >>> get_Juelich()
+
+    Download the atlas to a specific path, e.g. the user's Desktop
+    and indicate a resolution.
+
+    >>> get_Juelich(resolution=1, path='/home/user/Desktop')
+    """
+
+    # check input arguments and if not provided assign default
+    # target_space will be actively supported soon
+    if target_space is None:
+        target_space = 'MNI152NLin6Asym'
+    else:
+        print('Spatial transformations of atlases will soon be supported.')
+        print('At the moment only MNI152NLin6Asym is available.')
+        target_space = 'MNI152NLin6Asym'
+    if resolution is None:
+        resolution = 2
+    if threshold is None:
+        threshold = '25'
+    if path is None:
+        path = os.curdir
+
+    # generate the output path
+    outpath = check_output_path(path, atlas='Juelich')
+
+    if type == 'dseg':
+        # get the Harvard-Oxford atlas as provided by nilearn, deterministic version
+        juelich_atlas = datasets.fetch_atlas_juelich(atlas_name='maxprob-thr%s-%smm' % (threshold, resolution),
+                                                     symmetric_split=True)
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Juelich_res-%s_desc-thr%s_dseg.nii.gz' % (resolution, threshold)
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Juelich',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='dseg')
+    else:
+        # get the Harvard-Oxford atlas as provided by nilearn, probabilistic version
+        juelich_atlas = datasets.fetch_atlas_juelich(atlas_name='prob-%smm' % resolution)
+        # generate the filename pattern
+        atlas_file_name = 'atlas-Juelich_res-%s_pseg.nii.gz' % resolution
+
+        # generate the atlas json sidecar file
+        generate_json_sidecar_file('Juelich',
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='pseg')
+
+    # save the atlas at the indicated path with the generated filename
+    nb.save(juelich_atlas.maps, os.path.join(outpath, atlas_file_name))
+
+    # create the atlas .tsv file
+    juelich_df = pd.DataFrame({'Index': [i for i, label in enumerate(juelich_atlas.labels)],
+                               'Label': [label for i, label in enumerate(juelich_atlas.labels)],
+                               'Hemisphere': ['L' if 'Left' in label[1] else 'R' if "Right" in label[1] else 'bilat' for label in enumerate(juelich_atlas.labels)]
+                               })
+    
+    # save the atlas .tsv file
+    juelich_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                      index=False)
+
+    # print a message indicating what files were downloaded where
+    print('The following files were downloaded at %s' % outpath)
+    sd.seedir(outpath)
+
+    juelich_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
+                          'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                          'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+
+    return juelich_atlas_dict

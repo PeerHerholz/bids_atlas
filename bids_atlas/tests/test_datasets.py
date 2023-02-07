@@ -1,5 +1,5 @@
 import os
-from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach
+from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich
 from pathlib import Path
 
 
@@ -51,5 +51,18 @@ def test_download_Talairach():
     expected_files = ['atlas-Talairach_res-2_desc-gyrus_dseg.json',
                       'atlas-Talairach_res-2_desc-gyrus_dseg.nii.gz',
                       'atlas-Talairach_res-2_desc-gyrus_dseg.tsv',
+                      ]
+    assert actual_files == expected_files
+
+
+def test_download_Juelich():
+
+    # test if all files are downloaded
+
+    Juelich_atlas = get_Juelich()
+    actual_files = sorted(os.listdir(Path(Juelich_atlas['AtlasImage']).parents[0]))
+    expected_files = ['atlas-Juelich_res-2_desc-thr25_dseg.json',
+                      'atlas-Juelich_res-2_desc-thr25_dseg.nii.gz',
+                      'atlas-Juelich_res-2_desc-thr25_dseg.tsv',
                       ]
     assert actual_files == expected_files

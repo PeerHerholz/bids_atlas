@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach
+from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich
 
 
 # define parser to collect required inputs
@@ -13,17 +13,17 @@ def get_parser():
     parser = argparse.ArgumentParser(description='a CLI for accessing commonly used publicly available atlases in a BIDS-Atlas compliant form')
     parser.add_argument('bids_atlas_dir', action='store', type=Path, help='The directory where the atlas should be stored.')
     parser.add_argument('atlas', help='Atlas to download in a BIDS-Atlas compliant form.',
-                        choices=['AAL', 'Destrieux', 'HarvardOxford', 'Schaefer100'])
+                        choices=['AAL', 'Destrieux', 'HarvardOxford', 'Juelich', 'Schaefer100'])
     parser.add_argument('--target_space',
                         help='Target space the atlas should be provided in.'
                         'Currently, only MNI152NLin6Asym is available.',
                         choices=['MNI152NLin6Asym'])
     parser.add_argument('--resolution', help='Resolution the atlas should be provided in.',
                         choices=['1', '2'])
-    parser.add_argument('--type', help='Type the atlas should be provided in. (Only for Harvard-Oxford)',
+    parser.add_argument('--type', help='Type the atlas should be provided in. (Only for Harvard-Oxford & Juelich)',
                         choices=['pseg', 'dseg'])
-    parser.add_argument('--threshold', help='Threshold the atlas should be provided in. (Only for Harvard-Oxford)',
-                        choices=['25', '50'])
+    parser.add_argument('--threshold', help='Threshold the atlas should be provided in. (Only for Harvard-Oxford & Juelich)',
+                        choices=['0', '25', '50'])
     parser.add_argument('--level', help='Level the atlas should be provided in. (Only for Talairach)',
                         choices=['gyrus', 'hemisphere', 'lobe', 'tissue', 'ba'])
     parser.add_argument('-v', '--version', action='version',
@@ -69,6 +69,12 @@ def run_bids_atlas():
         # download the Talairach atlas and set user-defined input
         get_Talairach(target_space='MNI152NLin6Asym', level=args.level,
                       resolution=args.resolution, path=args.bids_atlas_dir)
+
+    elif args.atlas == 'Juelich':
+
+        # download the Harvard-Oxford atlas and set user-defined input
+        get_Juelich(target_space='MNI152NLin6Asym', type=args.type, threshold=args.threshold,
+                    resolution=args.resolution, path=args.bids_atlas_dir)
 
 
 # run the CLI

@@ -59,7 +59,7 @@ In the following you can find a respective list, indicating the atlas, the funct
             .. code-block:: python
             
                 from bids_atlas.datasets import get_Destrieux
-                AAL_atlas = get_Destrieux()
+                destrieux_atlas = get_Destrieux()
 
     .. grid-item-card::
 
@@ -102,7 +102,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_HarvardOxford
-                        AAL_atlas = get_HarvardOxford(type='dseg', threshold='25')
+                        HO_atlas = get_HarvardOxford(type='dseg', threshold='25')
 
             .. grid-item-card::
 
@@ -141,7 +141,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_HarvardOxford
-                        AAL_atlas = get_HarvardOxford(type='pseg')
+                        HO_atlas = get_HarvardOxford(type='pseg')
 
             .. grid-item-card::
 
@@ -182,7 +182,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_talairach
-                        AAL_atlas = get_HarvardOxford(level='gyrus')
+                        talairach_atlas = get_talairach(level='gyrus')
 
             .. grid-item-card::
 
@@ -222,7 +222,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_talairach
-                        AAL_atlas = get_HarvardOxford(level='hemisphere')
+                        talairach_atlas = get_talairach(level='hemisphere')
 
             .. grid-item-card::
 
@@ -262,7 +262,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_talairach
-                        AAL_atlas = get_HarvardOxford(level='lobe')
+                        talairach_atlas = get_talairach(level='lobe')
 
             .. grid-item-card::
 
@@ -302,7 +302,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_talairach
-                        AAL_atlas = get_HarvardOxford(level='tissue')
+                        talairach_atlas = get_talairach(level='tissue')
 
             .. grid-item-card::
 
@@ -342,7 +342,7 @@ In the following you can find a respective list, indicating the atlas, the funct
                     .. code-block:: python
                     
                         from bids_atlas.datasets import get_talairach
-                        AAL_atlas = get_HarvardOxford(level='gyrus')
+                        talairach_atlas = get_talairach(level='gyrus')
 
             .. grid-item-card::
 
@@ -366,3 +366,83 @@ In the following you can find a respective list, indicating the atlas, the funct
                             "LevelType": "PLEASE ADD",
                             "SpecialReference": "PLEASE ADD"
                         }                    
+
+.. dropdown::           Juelich
+
+    .. dropdown::           deterministic version
+
+        .. raw:: html
+            :file: _static/Juelich_dseg_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_Juelich
+                        juelich_atlas = get_Juelich(type='dseg', threshold='25')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Juelich atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "PLEASE ADD",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": "PLEASE ADD",
+                            "Species": "PLEASE ADD",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }
+
+    .. dropdown::           probabilistic version
+
+        .. raw:: html
+            :file: _static/Juelich_dseg_viewer.html
+    
+        .. grid:: 2
+            :outline:
+
+            .. grid-item-card::
+
+                .. dropdown:: Function
+
+                    .. code-block:: python
+                    
+                        from bids_atlas.datasets import get_Juelich
+                        juelich_atlas = get_Juelich(type='pseg')
+
+            .. grid-item-card::
+
+                .. dropdown:: Meta-data
+
+                    .. code-block:: json
+                    
+                        {
+                            "Name": "Juelich atlas",
+                            "Description": "PLEASE ADD",
+                            "BIDSVersion": "PLEASE ADD",
+                            "Curators": "PLEASE ADD",
+                            "HowToAcknowledge": "PLEASE ADD",
+                            "SourceDatasetsURLs": "PLEASE ADD",
+                            "License": "PLEASE ADD",
+                            "Funding": "PLEASE ADD",
+                            "ReferencesAndLinks": "PLEASE ADD",
+                            "Species": "PLEASE ADD",
+                            "DerivedFrom": "PLEASE ADD",
+                            "LevelType": "PLEASE ADD",
+                            "SpecialReference": "PLEASE ADD"
+                        }

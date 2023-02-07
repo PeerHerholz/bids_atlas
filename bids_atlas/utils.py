@@ -188,5 +188,18 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
             # get metadata for atlas
             json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-ba.json')
 
+    elif atlas_name == 'Juelich':
+
+        # get version-specific metadata
+        if version == 'dseg':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_dseg.json')
+
+        elif version == 'pseg':
+
+            # get metadata for atlas
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_pseg.json')
+
     # copy the atlas to the required directory
     copyfile(json_metadata, filename)
