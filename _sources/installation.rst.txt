@@ -12,12 +12,21 @@ Docker
 
 In order to run ```bids_atlas``` in a Docker container, Docker must be `installed
 <https://docs.docker.com/engine/installation/>`_ on your system.
-Once Docker is installed, you can get ``bids_atlas`` through running the following
-command in the terminal of your choice:
+Once Docker is installed, you can get ``bids_atlas`` through  running one of the following
+commands in the terminal of your choice.
+
+Option 1: pulling from the `dockerhub registry <https://hub.docker.com/repository/docker/peerherholz/bids_atlas/general>`_ :
+
 
 .. code-block:: bash
 
     docker pull peerherholz/bids_atlas:version
+
+Option 2: pulling from the `github container registry <https://github.com/PeerHerholz/bids_atlas/pkgs/container/bids_bep16_conv>`_ :
+
+.. code-block:: bash
+
+    docker pull ghcr.io/peerherholz/bids_atlas:version
 
 Where ``version`` is the specific version of ``bids_atlas`` you would like to use. For example, if you want 
 to employ the ``latest``/most up to date ``version`` you can either run 
@@ -25,6 +34,10 @@ to employ the ``latest``/most up to date ``version`` you can either run
 .. code-block:: bash
 
     docker pull peerherholz/bids_atlas:latest
+
+.. code-block:: bash
+
+    docker pull ghcr.io/peerherholz/bids_atlas:latest
 
 or the same command withouth the ``:latest`` tag, as ``Docker`` searches for the ``latest`` tag by default.
 However, as the ``latest`` version is subject to changes and not necessarily in synch with the most recent ``numbered version``, it 
@@ -34,12 +47,9 @@ is recommend to utilize the latter to ensure reproducibility. For example, if yo
 
     docker pull peerherholz/bids_atlas:v0.0.1
 
-.. note::
+.. code-block:: bash
 
-   As of November 2020, `images older than 6 months will be deleted from Dockerhub
-   <https://www.docker.com/pricing/retentionfaq>`_. As this is very problematic for everything
-   reproducibility and version control, every version of the ``bids_atlas images`` are additionally
-   uploaded on `OSF <https://osf.io/u4g5p/>`_ and can be installed as outlined further below.
+    docker pull ghcr.io/peerherholz/bids_atlas:v0.0.1
 
 After the command finished (it may take a while depending on your internet connection),
 you can run ``bids_atlas`` like this:
