@@ -267,11 +267,11 @@ def get_HarvardOxford(target_space=None, resolution=None, type='dseg', threshold
         # get the Harvard-Oxford atlas as provided by nilearn, probabilistic version
         harvardoxford_atlas = datasets.fetch_atlas_harvard_oxford(atlas_name='cort-prob-%smm' % resolution)
         # generate the filename pattern
-        atlas_file_name = 'atlas-HarvardOxford_res-%s_pseg.nii.gz' % resolution
+        atlas_file_name = 'atlas-HarvardOxford_res-%s_probseg.nii.gz' % resolution
 
         # generate the atlas json sidecar file
         generate_json_sidecar_file('HarvardOxford',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='pseg')
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='probseg')
 
     # save the atlas at the indicated path with the generated filename
     nb.save(harvardoxford_atlas.maps, os.path.join(outpath, atlas_file_name))
@@ -494,11 +494,11 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
         # get the Harvard-Oxford atlas as provided by nilearn, probabilistic version
         juelich_atlas = datasets.fetch_atlas_juelich(atlas_name='prob-%smm' % resolution)
         # generate the filename pattern
-        atlas_file_name = 'atlas-Juelich_res-%s_pseg.nii.gz' % resolution
+        atlas_file_name = 'atlas-Juelich_res-%s_probseg.nii.gz' % resolution
 
         # generate the atlas json sidecar file
         generate_json_sidecar_file('Juelich',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='pseg')
+                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='probseg')
 
     # save the atlas at the indicated path with the generated filename
     nb.save(juelich_atlas.maps, os.path.join(outpath, atlas_file_name))

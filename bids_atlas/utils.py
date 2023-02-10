@@ -155,10 +155,10 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
             # get metadata for atlas
             json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_dseg.json')
 
-        elif version == 'pseg':
+        elif version == 'probseg':
 
             # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_pseg.json')
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_probseg.json')
 
     elif atlas_name == 'Talairach':
 
@@ -196,10 +196,10 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
             # get metadata for atlas
             json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_dseg.json')
 
-        elif version == 'pseg':
+        elif version == 'probseg':
 
             # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_pseg.json')
+            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_probseg.json')
 
     # copy the atlas to the required directory
     copyfile(json_metadata, filename)
