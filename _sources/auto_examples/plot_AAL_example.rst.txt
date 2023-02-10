@@ -135,7 +135,7 @@ and thus easily be loaded, plotted, or utilized within an analysis.
  .. code-block:: none
 
 
-    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f1ee370e820>
+    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7fbddb1d3910>
 
 
 
@@ -189,31 +189,31 @@ indicating the indices of the atlas and details thereof.
           <th>0</th>
           <td>2001</td>
           <td>Precentral_L</td>
-          <td>L</td>
+          <td>left</td>
         </tr>
         <tr>
           <th>1</th>
           <td>2002</td>
           <td>Precentral_R</td>
-          <td>R</td>
+          <td>right</td>
         </tr>
         <tr>
           <th>2</th>
           <td>2101</td>
           <td>Frontal_Sup_L</td>
-          <td>L</td>
+          <td>left</td>
         </tr>
         <tr>
           <th>3</th>
           <td>2102</td>
           <td>Frontal_Sup_R</td>
-          <td>R</td>
+          <td>right</td>
         </tr>
         <tr>
           <th>4</th>
           <td>2111</td>
           <td>Frontal_Sup_Orb_L</td>
-          <td>L</td>
+          <td>left</td>
         </tr>
         <tr>
           <th>...</th>
@@ -304,7 +304,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.833 seconds)
+   **Total running time of the script:** ( 0 minutes  4.563 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_AAL_example.py:
