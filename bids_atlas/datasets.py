@@ -80,7 +80,7 @@ def get_AAL(target_space=None, resolution=None, path=None):
     # create the atlas .tsv file
     aal_df = pd.DataFrame({'Index': aal_atlas.indices,
                            'Label': aal_atlas.labels,
-                           'Hemisphere': ['L' if '_L' in label else 'R' if "_R" in label else 'NA' for label in aal_atlas.labels]
+                           'Hemisphere': ['left' if '_L' in label else 'right' if "_R" in label else 'NA' for label in aal_atlas.labels]
                            })
     
     # save the atlas .tsv file
@@ -172,7 +172,7 @@ def get_Destrieux(target_space=None, resolution=None, path=None):
     # create the atlas .tsv file
     destrieux_df = pd.DataFrame({'Index': [ind[0] for ind in destrieux_atlas.labels],
                                  'Label': [ind[1] for ind in destrieux_atlas.labels],
-                                 'Hemisphere': ['L' if 'L' in label[1] else 'R' if "R" in label[1] else 'NA' for label in destrieux_atlas.labels]
+                                 'Hemisphere': ['left' if 'L' in label[1] else 'right' if "R" in label[1] else 'NA' for label in destrieux_atlas.labels]
                                  })
     
     # save the atlas .tsv file
@@ -279,7 +279,7 @@ def get_HarvardOxford(target_space=None, resolution=None, type='dseg', threshold
     # create the atlas .tsv file
     ho_df = pd.DataFrame({'Index': [i for i, label in enumerate(harvardoxford_atlas.labels)],
                           'Label': [label for i, label in enumerate(harvardoxford_atlas.labels)],
-                          'Hemisphere': ['L' if 'Left' in label[1] else 'R' if "Right" in label[1] else 'bilat' for label in enumerate(harvardoxford_atlas.labels)]
+                          'Hemisphere': ['left' if 'Left' in label[1] else 'right' if "Right" in label[1] else 'bilateral' for label in enumerate(harvardoxford_atlas.labels)]
                           })
     
     # save the atlas .tsv file
@@ -403,7 +403,7 @@ def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
     # create the atlas .tsv file
     talairach_df = pd.DataFrame({'Index': [i for i, label in enumerate(talairach_atlas.labels)],
                                  'Label': [label for i, label in enumerate(talairach_atlas.labels)],
-                                 'Hemisphere': 'bilat'
+                                 'Hemisphere': 'bilateral'
                                  })
     
     # save the atlas .tsv file
@@ -506,7 +506,7 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
     # create the atlas .tsv file
     juelich_df = pd.DataFrame({'Index': [i for i, label in enumerate(juelich_atlas.labels)],
                                'Label': [label for i, label in enumerate(juelich_atlas.labels)],
-                               'Hemisphere': ['L' if 'Left' in label[1] else 'R' if "Right" in label[1] else 'bilat' for label in enumerate(juelich_atlas.labels)]
+                               'Hemisphere': ['left' if 'Left' in label[1] else 'right' if "Right" in label[1] else 'bilateral' for label in enumerate(juelich_atlas.labels)]
                                })
     
     # save the atlas .tsv file
