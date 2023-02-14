@@ -1,10 +1,16 @@
 
-==========
-BIDS Atlas 
-==========
+
+.. image:: _static/bids_atlas_logo.png
+   :align: center
+   :width: 400px
+
+.. centered:: A small python package to access publicly available brain atlases in a `BIDS <https://bids.neuroimaging.io/>`_-Atlas compliant manner.
+
+
 
 .. image:: https://github.com/PeerHerholz/bids_atlas/actions/workflows/docs.yml/badge.svg
         :target: https://github.com/PeerHerholz/bids_atlas/actions/workflows/docs.yml
+
 
 .. image:: https://img.shields.io/pypi/v/bids_atlas.svg
         :target: https://pypi.python.org/pypi/bids_atlas
@@ -25,7 +31,10 @@ BIDS Atlas
 .. image:: https://img.shields.io/github/license/PeerHerholz/bids_atlas.svg
         :target: https://github.com/PeerHerholz/bids_atlas
 
-A small python package to access publicly available brain atlases in a `BIDS <https://bids.neuroimaging.io/>`_-Atlas compliant manner.
+
+
+
+|
 
 
 Introduction
