@@ -297,7 +297,7 @@ def get_HarvardOxford(target_space=None, resolution=None, type='dseg', threshold
     return ho_atlas_dict
 
 
-# define function to get the Harvard-Oxford atlas
+# define function to get the Talairach atlas
 def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
     """
     Download the Talairach atlas in specified target space and resolution,
@@ -421,7 +421,7 @@ def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
     return talairach_atlas_dict
 
 
-# define function to get the Harvard-Oxford atlas
+# define function to get the Juelich atlas
 def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None, path=None):
     """
     Download the Juelich atlas in specified target space and resolution,
