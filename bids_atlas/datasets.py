@@ -522,3 +522,101 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
                           'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
 
     return juelich_atlas_dict
+
+
+# define function to get the Schaefer atlas
+def get_Schaefer(target_space=None, resolution=None, n_rois='100', roi_annotation='7', path=None):
+    """
+    Download the Schaefer atlas in specified target space and resolution,
+    providing it in a BIDS-Atlas compliant manner.
+
+    Parameters
+    ----------
+    target_space : string
+        Target space the atlas should be provided in. If None, the atlas
+        will be provided in MNI152NLin6Asym. Default = None.
+    resolution : string
+        Resolution the atlas should be provided in. If None, the atlas
+        will be provided in 2mm resolution. Default = None.
+    n_rois : string
+        Version of the Schaefer atlas to be downloaded, ie number of
+        regions. Can be 100 - 1000 in steps of 100. Default = '100'.
+    roi_annotation : string
+        Annotation that should be used for the ROIs. Can either be based
+        on Yeo 7 networks or Yeo 17 networks. Default = '7'.
+    path : string
+        Path where the atlas will be saved. If None, the file will be saved
+        in the current working directory. Default = None.
+
+    Returns
+    -------
+    dict : Dictionary
+        A Dictionary containing the paths to the atlas image, tsv and json files.
+
+    Examples
+    --------
+    Download the Schaefer atlas to the current directory.
+
+    >>> get_Schaefer()
+
+    Download the atlas to a specific path, e.g. the user's Desktop
+    and indicate a version, here the version with 400 regions.
+
+    >>> get_Schaefer(n_rois='400', path='/home/user/Desktop')
+    """
+
+    # check input arguments and if not provided assign default
+    # target_space will be actively supported soon
+    if target_space is None:
+        target_space = 'MNI152NLin6Asym'
+    else:
+        print('Spatial transformations of atlases will soon be supported.')
+        print('At the moment only MNI152NLin6Asym is available.')
+        target_space = 'MNI152NLin6Asym'
+    if resolution is None:
+        resolution = 2
+    if path is None:
+        path = os.curdir
+
+    # generate the output path
+    outpath = check_output_path(path, atlas='Schaefer')
+
+    # get the Schaefer atlas as provided by nilearn
+    schaefer_atlas = datasets.fetch_atlas_schaefer_2018(n_rois=int(n_rois), yeo_networks=int(roi_annotation))
+    
+    # get the target/reference as provided by templateflow
+    target = tflow.get(target_space, desc='brain', resolution=resolution, suffix='T1w',
+                       extension='nii.gz')
+
+    # resample the atlas to the indicated resolution if needed
+    schaefer_atlas_nii = resample_atlas_target(schaefer_atlas.maps, target)
+
+    # generate the filename pattern
+    atlas_file_name = 'atlas-Schaefer%s_res-%s_probseg.nii.gz' % (n_rois, resolution)
+
+    # generate the atlas json sidecar file
+    generate_json_sidecar_file('Schaefer',
+                               os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')))
+
+    # save the atlas at the indicated path with the generated filename
+    nb.save(schaefer_atlas_nii, os.path.join(outpath, atlas_file_name))
+
+    # create the atlas .tsv file
+    schaefer_df = pd.DataFrame({'Index': [i for i, label in enumerate(schaefer_atlas.labels)],
+                                'Label': [label.decode("utf-8") for i, label in enumerate(schaefer_atlas.labels)],
+                                'Hemisphere': ['left' if 'LH' in label[1].decode("utf-8") else 'right' if "RH" in label[1].decode("utf-8") else 'bilateral' for label in enumerate(schaefer_atlas.labels)]
+                                })
+    
+    # save the atlas .tsv file
+    schaefer_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                       index=False)
+
+    # print a message indicating what files were downloaded where
+    print('The following files were downloaded at %s' % outpath)
+    sd.seedir(outpath)
+
+    schaefer_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
+                           'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
+                           'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+
+    return schaefer_atlas_dict

@@ -10,7 +10,7 @@ exclude =
     docs/*,
     setup.py,
     examples/*
-max-line-length = 175
+max-line-length = 205
 ignore = E203, 
          W503,
          W293,

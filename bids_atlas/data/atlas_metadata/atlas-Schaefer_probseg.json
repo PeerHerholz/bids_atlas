@@ -1,0 +1,16 @@
+{
+    "Name": "Schaefer 2018 Atlas",
+    "Description": "This atlas provides a labeling of cortical voxels in the MNI152\nspace, see Schaefer et al. (2018). ",
+    "BIDSVersion": "PLEASE ADD",
+    "Curators": "PLEASE ADD",
+    "HowToAcknowledge": "PLEASE ADD",
+    "SourceDatasetsURLs": "https://github.com/ThomasYeoLab/CBIG/tree/v0.8.1-Schaefer2018_LocalGlobal/stable_projects/brain_parcellation/Schaefer2018_LocalGlobalSchaefer",
+    "License": "MIT",
+    "Funding": "PLEASE ADD",
+    "ReferencesAndLinks": ["A, Kong R, Gordon EM, Laumann TO, Zuo XN, Holmes AJ, Eickhoff SB, Yeo BTT. Local-Global parcellation of the human cerebral cortex from intrinsic functional connectivity MRI, Cerebral Cortex, 29:3095-3114, 2018",
+                           "Yeo BT, Krienen FM, Sepulcre J, Sabuncu MR, Lashkari D, Hollinshead M, Roffman JL, Smoller JW, Zollei L., Polimeni JR, Fischl B, Liu H, Buckner RL. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J Neurophysiol 106(3):1125-65, 2011"],
+    "Species": "Human",
+    "DerivedFrom": "PLEASE ADD",
+    "LevelType": "PLEASE ADD",
+    "SpecialReference": "PLEASE ADD"
+}
