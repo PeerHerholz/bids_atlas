@@ -197,8 +197,6 @@ texinfo_documents = [
 ]
 
 
-
-
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
@@ -209,25 +207,15 @@ intersphinx_mapping = {
 }
 
 sphinx_gallery_conf = {
-    'examples_dirs': '../../examples',   # path to your example scripts
-    'gallery_dirs': 'auto_examples',  # path to where to save gallery generated output
-    'doc_module': 'bids_atlas',
-    'backreferences_dir': os.path.join('generated', 'modules'),
+    'examples_dirs': ['../../examples'],   # path to your example scripts
+    'gallery_dirs': ['auto_examples'],  # path to where to save gallery generated output
+    'doc_module': ('bids_atlas'),
+    'backreferences_dir': 'gen_modules/backreferences',
     'reference_url': {
         'bids_atlas': None
     },
     'thumbnail_size': (250, 250),
     'ignore_pattern': r'/wip.*\.py',
-    # path to your example scripts
-    'examples_dirs': ['../../examples'],
-    # path to where to save gallery generated output
-    'gallery_dirs': ['auto_examples'],
-    # specify that examples should be ordered according to filename
-    # directory where function granular galleries are stored
-    'backreferences_dir': 'gen_modules/backreferences',
-    # Modules for which function level galleries are created.  In
-    # this case sphinx_gallery and numpy in a tuple of strings.
-    'doc_module': ('bids_atlas'),
 }
 
 html_theme_options = {

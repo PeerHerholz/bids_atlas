@@ -41,4 +41,4 @@ jobs:
     - name: Lint code
       shell: bash -l {0}
       run: |
-        flake8
+        flake8 bids_atlas/ --config=.flake8
