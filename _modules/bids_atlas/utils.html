@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,25 +45,18 @@
   
   
   
-    <title>bids_atlas.utils &#8212; bids_atlas 0.post1+g276d61a documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/design-tabs.js"></script>
+    <title>bids_atlas.utils &#8212; bids_atlas 0.post1+g89194f3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../../_static/documentation_options.js?v=a3b93773"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   
@@ -90,7 +82,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="bids_atlas 0.post1+g276d61a documentation"
+        <a href="../../index.html" title="bids_atlas 0.post1+g89194f3 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -113,7 +105,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -176,7 +168,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">bids_atlas 0.post1+g276d61a documentation</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">bids_atlas 0.post1+g89194f3 documentation</a></li>
           <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Module code</a></li>
       </ul>
     </div>
@@ -189,13 +181,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="bids_atlas 0.post1+g276d61a documentation" class="md-nav__button md-logo">
+    <a href="../../index.html" title="bids_atlas 0.post1+g89194f3 documentation" class="md-nav__button md-logo">
       
         <img src="../../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../index.html"
-       title="bids_atlas 0.post1+g276d61a documentation">BIDS Atlas</a>
+       title="bids_atlas 0.post1+g89194f3 documentation">BIDS Atlas</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/PeerHerholz/bids_atlas" title="Go to repository" class="md-source" data-md-source="github">
@@ -292,17 +284,19 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <h1 id="modules-bids-atlas-utils--page-root">Source code for bids_atlas.utils</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">resample_to_img</span>
-<span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">copyfile</span>
-<span class="kn">import</span> <span class="nn">importlib_resources</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nibabel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nb</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nilearn.image</span><span class="w"> </span><span class="kn">import</span> <span class="n">resample_to_img</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">copyfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib_resources</span>
 
 
 <span class="c1"># define function to check output path</span>
-<div class="viewcode-block" id="check_output_path"><a class="viewcode-back" href="../../generated/bids_atlas.utils.check_output_path.html#bids_atlas.utils.check_output_path">[docs]</a><span class="k">def</span> <span class="nf">check_output_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">atlas</span><span class="p">):</span>
+<div class="viewcode-block" id="check_output_path">
+<a class="viewcode-back" href="../../generated/bids_atlas.utils.check_output_path.html#bids_atlas.utils.check_output_path">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_output_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">atlas</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Check if the desired path to save the atlas exists and if not,</span>
 <span class="sd">    create it.</span>
@@ -334,7 +328,7 @@
 <span class="sd">    """</span>
 
     <span class="c1"># generate full path to atlas based on indicated output directory and atlas name</span>
-    <span class="n">atlas_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s1">'bids_atlas_datasets'</span><span class="p">,</span> <span class="n">atlas</span><span class="p">)</span>
+    <span class="n">atlas_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s1">'bids_atlas_datasets'</span><span class="p">,</span> <span class="s1">'atlas-'</span> <span class="o">+</span> <span class="n">atlas</span><span class="p">)</span>
 
     <span class="c1"># check if the path exists and if not create it</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -348,8 +342,11 @@
     <span class="k">return</span> <span class="n">atlas_path</span></div>
 
 
+
 <span class="c1"># define function to resample atlas to indicated resolution</span>
-<div class="viewcode-block" id="resample_atlas_target"><a class="viewcode-back" href="../../generated/bids_atlas.utils.resample_atlas_target.html#bids_atlas.utils.resample_atlas_target">[docs]</a><span class="k">def</span> <span class="nf">resample_atlas_target</span><span class="p">(</span><span class="n">atlas</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<div class="viewcode-block" id="resample_atlas_target">
+<a class="viewcode-back" href="../../generated/bids_atlas.utils.resample_atlas_target.html#bids_atlas.utils.resample_atlas_target">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">resample_atlas_target</span><span class="p">(</span><span class="n">atlas</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Check if the atlas is in the desired resolution and if not resample it.</span>
 
@@ -406,7 +403,10 @@
         <span class="k">return</span> <span class="n">atlas_resampled</span></div>
 
 
-<div class="viewcode-block" id="generate_json_sidecar_file"><a class="viewcode-back" href="../../generated/bids_atlas.utils.generate_json_sidecar_file.html#bids_atlas.utils.generate_json_sidecar_file">[docs]</a><span class="k">def</span> <span class="nf">generate_json_sidecar_file</span><span class="p">(</span><span class="n">atlas_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="generate_json_sidecar_file">
+<a class="viewcode-back" href="../../generated/bids_atlas.utils.generate_json_sidecar_file.html#bids_atlas.utils.generate_json_sidecar_file">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_json_sidecar_file</span><span class="p">(</span><span class="n">atlas_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Create .json file for the obtained atlas.</span>
 
@@ -414,10 +414,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    atlas_name : str</span>
 <span class="sd">        The name of the atlas.</span>
-<span class="sd">    filename : str</span>
-<span class="sd">        The file naming pattern of the atlas.</span>
-<span class="sd">    version : str</span>
-<span class="sd">        The version of the atlas.</span>
+<span class="sd">    path : string</span>
+<span class="sd">        Path where the json sidecar will be saved.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -427,81 +425,79 @@
 <span class="sd">    --------</span>
 <span class="sd">    Create dataset_description.json for the AAL atlas.</span>
 
-<span class="sd">    &gt;&gt;&gt;generate_json_sidecar_file('AAL', '/home/user/bids_atlas_datasets/AAL/atlas-AAL_res-2_dseg.nii.gz')</span>
+<span class="sd">    &gt;&gt;&gt;generate_json_sidecar_file('AAL', '/home/user/bids_atlas_datasets/atlas-AAL')</span>
 <span class="sd">    """</span>
     
     <span class="c1"># check which atlas was provided and copy the respective metadata template to the corresponding directory</span>
     <span class="k">if</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'AAL'</span><span class="p">:</span>
 
         <span class="c1"># get metadata for atlas</span>
-        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-AAL_dseg.json'</span><span class="p">)</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-AAL_description.json'</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'Destrieux'</span><span class="p">:</span>
 
         <span class="c1"># get metadata for atlas</span>
-        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Destrieux_dseg.json'</span><span class="p">)</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Destrieux_description.json'</span><span class="p">)</span>
     
     <span class="k">elif</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'HarvardOxford'</span><span class="p">:</span>
 
-        <span class="c1"># get version-specific metadata</span>
-        <span class="k">if</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'dseg'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-HarvardOxford_dseg.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'probseg'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-HarvardOxford_probseg.json'</span><span class="p">)</span>
+        <span class="c1"># get metadata for atlas</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-HarvardOxford_description.json'</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'Talairach'</span><span class="p">:</span>
 
-        <span class="c1"># get version-specific metadata</span>
-        <span class="k">if</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'gyrus'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_desc-gyrus.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'hemisphere'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_desc-hemisphere.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'lobe'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_desc-lobe.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'tissue'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_desc-tissue.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'ba'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_desc-ba.json'</span><span class="p">)</span>
-
+        <span class="c1"># get metadata for atlas</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Talairach_description.json'</span><span class="p">)</span>
+   
     <span class="k">elif</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'Juelich'</span><span class="p">:</span>
 
-        <span class="c1"># get version-specific metadata</span>
-        <span class="k">if</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'dseg'</span><span class="p">:</span>
+        <span class="c1"># get metadata for atlas</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Juelich_description.json'</span><span class="p">)</span>
 
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Juelich_dseg.json'</span><span class="p">)</span>
-
-        <span class="k">elif</span> <span class="n">version</span> <span class="o">==</span> <span class="s1">'probseg'</span><span class="p">:</span>
-
-            <span class="c1"># get metadata for atlas</span>
-            <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Juelich_probseg.json'</span><span class="p">)</span>
-    
     <span class="k">elif</span> <span class="n">atlas_name</span> <span class="o">==</span> <span class="s1">'Schaefer'</span><span class="p">:</span>
 
         <span class="c1"># get metadata for atlas</span>
-        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Schaefer_probseg.json'</span><span class="p">)</span>
+        <span class="n">json_metadata</span> <span class="o">=</span> <span class="n">importlib_resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">'data/atlas_metadata/atlas-Schaefer_description.json'</span><span class="p">)</span>
 
     <span class="c1"># copy the atlas to the required directory</span>
-    <span class="n">copyfile</span><span class="p">(</span><span class="n">json_metadata</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+    <span class="n">copyfile</span><span class="p">(</span><span class="n">json_metadata</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">json_metadata</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">download_template_metadata</span><span class="p">(</span><span class="n">target_space</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Download template metadata from templateflow GitHub repository.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    target_space : str</span>
+<span class="sd">        The target space/template name (e.g., 'MNI152NLin6Asym').</span>
+<span class="sd">    output_path : str</span>
+<span class="sd">        Path where the template_description.json file should be saved.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if download was successful, False otherwise.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Download template metadata for MNI152NLin6Asym space.</span>
+
+<span class="sd">    &gt;&gt;&gt; download_template_metadata('MNI152NLin6Asym', '/path/to/output/template_description.json')</span>
+<span class="sd">    """</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+    
+    <span class="c1"># construct the URL for the template metadata</span>
+    <span class="n">template_metadata_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'https://raw.githubusercontent.com/templateflow/tpl-</span><span class="si">{</span><span class="n">target_space</span><span class="si">}</span><span class="s1">/master/template_description.json'</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">template_metadata_url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Downloaded template metadata to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Warning: Could not download template metadata from </span><span class="si">{</span><span class="n">template_metadata_url</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
           </article>
@@ -526,7 +522,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

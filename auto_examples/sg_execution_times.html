@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -47,25 +46,18 @@
   
   
   
-    <title>Computation times &#8212; bids_atlas 0.post1+g276d61a documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+    <title>Computation times &#8212; bids_atlas 0.post1+g89194f3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=a3b93773"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   
@@ -91,7 +83,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="bids_atlas 0.post1+g276d61a documentation"
+        <a href="../index.html" title="bids_atlas 0.post1+g89194f3 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -114,7 +106,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -177,7 +169,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">bids_atlas 0.post1+g276d61a documentation</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">bids_atlas 0.post1+g89194f3 documentation</a></li>
       </ul>
     </div>
   </nav>
@@ -189,13 +181,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="bids_atlas 0.post1+g276d61a documentation" class="md-nav__button md-logo">
+    <a href="../index.html" title="bids_atlas 0.post1+g89194f3 documentation" class="md-nav__button md-logo">
       
         <img src="../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="bids_atlas 0.post1+g276d61a documentation">BIDS Atlas</a>
+       title="bids_atlas 0.post1+g89194f3 documentation">BIDS Atlas</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/PeerHerholz/bids_atlas" title="Go to repository" class="md-source" data-md-source="github">
@@ -293,16 +285,35 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="computation-times">
-<span id="sphx-glr-auto-examples-sg-execution-times"></span><h1 id="auto-examples-sg-execution-times--page-root">Computation times<a class="headerlink" href="#auto-examples-sg-execution-times--page-root" title="Permalink to this heading">¶</a></h1>
-<p><strong>00:05.091</strong> total execution time for <strong>auto_examples</strong> files:</p>
-<table>
+<span id="sphx-glr-auto-examples-sg-execution-times"></span><h1 id="auto-examples-sg-execution-times--page-root">Computation times<a class="headerlink" href="#auto-examples-sg-execution-times--page-root" title="Link to this heading">¶</a></h1>
+<p><strong>00:06.266</strong> total execution time for 1 file <strong>from auto_examples</strong>:</p>
+<div class="docutils container">
+<style scoped="">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script class="init" type="text/javascript">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="plot_AAL_example.html#sphx-glr-auto-examples-plot-aal-example-py"><span class="std std-ref">Fetching BIDS-Atlas compliant atlases</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_AAL_example.py</span></code>)</p></td>
-<td><p>00:05.091</p></td>
-<td><p>0.0 MB</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_AAL_example.html#sphx-glr-auto-examples-plot-aal-example-py"><span class="std std-ref">Fetching BIDS-Atlas compliant atlases</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_AAL_example.py</span></code>)</p></td>
+<td><p>00:06.266</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 
 
@@ -328,7 +339,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -1,0 +1,6 @@
+﻿bids\_atlas.datasets.get\_Schaefer2018
+======================================
+
+.. currentmodule:: bids_atlas.datasets
+
+.. autofunction:: get_Schaefer2018

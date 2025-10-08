@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_plot_AAL_example.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_plot_AAL_example.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -29,19 +29,21 @@ Much of the functionality of the ``bids_atlas`` toolbox relies on downloading
 commonly used publicly available atlases. Each atlas has its own ``function``, with certain
 arguments being shared across all of them.
 This specifically refers to the ``target space`` and ``resolution`` the given ``atlas`` should
-be obtained in. 
+be obtained in.
 
 Here we show how download a few atlases, using the respective ``functions`` and ``arguments``.
 
 First of all, we are going to import ``bids_atlas`` ``dataset`` ``module``, as this will give us
 access to all respective functions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-23
+.. GENERATED FROM PYTHON SOURCE LINES 20-25
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from bids_atlas import datasets
+    import pandas as pd
+    from nilearn.plotting import plot_roi
 
 
 
@@ -50,16 +52,16 @@ access to all respective functions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-28
+.. GENERATED FROM PYTHON SOURCE LINES 26-30
 
 Lets start with the ``AAL`` ``atlas``. In order to obtain it in a ``BIDS-Atlas`` compliant manner, we only need to
 use the respective function, called ``get_AAL``. If we run it without specifying any arguments, it will be provided
-in the current directory and default specifications, ie 2mm resolution. The function will return a dictionary with 
+in the current directory and default specifications, ie 2mm resolution. The function will return a dictionary with
 the paths to atlas image, .tsv and .json files.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-31
+.. GENERATED FROM PYTHON SOURCE LINES 30-33
 
-.. code-block:: default
+.. code-block:: Python
 
 
     AAL_atlas = datasets.get_AAL()
@@ -72,25 +74,48 @@ the paths to atlas image, .tsv and .json files.
 
  .. code-block:: none
 
+    [fetch_atlas_aal] Added README.md to /home/runner/nilearn_data
+    [fetch_atlas_aal] Dataset created in /home/runner/nilearn_data/aal_3v2
+    [fetch_atlas_aal] Downloading data from 
+    https://www.gin.cnrs.fr/wp-content/uploads/AAL3v2_for_SPM12.tar.gz ...
+    [fetch_atlas_aal]  ...done. (2 seconds, 0 min)
+
+    [fetch_atlas_aal] Extracting data from 
+    /home/runner/nilearn_data/aal_3v2/43f38da73bc7adb6022df5794d84f2eb/AAL3v2_for_SP
+    M12.tar.gz...
+    [fetch_atlas_aal] .. done.
+
+    Downloading https://templateflow.s3.amazonaws.com/tpl-MNIColin27/tpl-MNIColin27_T1w.nii.gz
+      0%|          | 0.00/14.7M [00:00<?, ?B/s]      0%|          | 69.6k/14.7M [00:00<00:27, 533kB/s]      2%|▏         | 348k/14.7M [00:00<00:08, 1.64MB/s]     10%|▉         | 1.47M/14.7M [00:00<00:02, 5.62MB/s]     21%|██        | 3.02M/14.7M [00:00<00:01, 9.33MB/s]     46%|████▌     | 6.79M/14.7M [00:00<00:00, 19.2MB/s]     78%|███████▊  | 11.4M/14.7M [00:00<00:00, 28.2MB/s]    100%|██████████| 14.7M/14.7M [00:00<00:00, 20.8MB/s]
     checking if atlas needs to be resampled
     atlas will be resampled to target
-    Atlas will be saved to /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/AAL
-    The following files were downloaded at /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/AAL
-    AAL/
-    ├─atlas-AAL_res-2_dseg.json
-    ├─atlas-AAL_res-2_dseg.tsv
-    └─atlas-AAL_res-2_dseg.nii.gz
+    /home/runner/work/bids_atlas/bids_atlas/bids_atlas/utils.py:110: FutureWarning: 'force_resample' will be set to 'True' by default in Nilearn 0.13.0.
+    Use 'force_resample=True' to suppress this warning.
+      atlas_resampled = resample_to_img(atlas, target, interpolation='nearest')
+    /home/runner/work/bids_atlas/bids_atlas/bids_atlas/utils.py:110: FutureWarning: From release 0.13.0 onwards, this function will, by default, copy the header of the input image to the output. Currently, the header is reset to the default Nifti1Header. To suppress this warning and use the new behavior, set `copy_header=True`.
+      atlas_resampled = resample_to_img(atlas, target, interpolation='nearest')
+    Atlas will be saved to /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/atlas-AAL
+    Downloaded template metadata to /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/atlas-AAL/tpl-MNIColin27/anat/tpl-MNIColin27.json
+    The following files were downloaded at /home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/atlas-AAL
+    atlas-AAL/
+    ├─atlas-AAL_description.json
+    └─tpl-MNIColin27/
+      └─anat/
+        ├─tpl-MNIColin27_atlas-AAL_res-1_dseg.tsv
+        ├─tpl-MNIColin27.json
+        ├─tpl-MNIColin27_T1w.nii.gz
+        └─tpl-MNIColin27_atlas-AAL_res-1_dseg.nii.gz
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-33
+.. GENERATED FROM PYTHON SOURCE LINES 34-35
 
 Now the respective files can be accessed via their ``keys``. The path to the ``atlas image`` can be obtained via
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-36
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
-.. code-block:: default
+.. code-block:: Python
 
 
     AAL_atlas['AtlasImage']
@@ -104,20 +129,18 @@ Now the respective files can be accessed via their ``keys``. The path to the ``a
  .. code-block:: none
 
 
-    '/home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/AAL/atlas-AAL_res-2_dseg.nii.gz'
+    '/home/runner/work/bids_atlas/bids_atlas/examples/bids_atlas_datasets/atlas-AAL/tpl-MNIColin27/anat/tpl-MNIColin27_atlas-AAL_res-1_dseg.nii.gz'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-38
+.. GENERATED FROM PYTHON SOURCE LINES 39-40
 
 and thus easily be loaded, plotted, or utilized within an analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-43
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
-.. code-block:: default
+.. code-block:: Python
 
-
-    from nilearn.plotting import plot_roi
 
     plot_roi(AAL_atlas['AtlasImage'], draw_cross=False, cmap='Set2')
 
@@ -135,23 +158,21 @@ and thus easily be loaded, plotted, or utilized within an analysis.
  .. code-block:: none
 
 
-    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7f88df2253d0>
+    <nilearn.plotting.displays._slicers.OrthoSlicer object at 0x7fcdd58c21d0>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 44-46
 
 The .tsv and .json files contain important information and metadata concerning the atlas. The former entails a DataFrame
-indicating the indices of the atlas and details thereof. 
+indicating the indices of the atlas and details thereof.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-51
+.. GENERATED FROM PYTHON SOURCE LINES 46-49
 
-.. code-block:: default
+.. code-block:: Python
 
 
-    import pandas as pd
-
-    pd.read_csv(AAL_atlas['AtlasTSV'])
+    pd.read_csv(AAL_atlas['AtlasTSV'], sep='\t')
 
 
 
@@ -187,33 +208,33 @@ indicating the indices of the atlas and details thereof.
       <tbody>
         <tr>
           <th>0</th>
-          <td>2001</td>
-          <td>Precentral_L</td>
-          <td>left</td>
+          <td>0</td>
+          <td>Background</td>
+          <td>NaN</td>
         </tr>
         <tr>
           <th>1</th>
-          <td>2002</td>
-          <td>Precentral_R</td>
-          <td>right</td>
+          <td>1</td>
+          <td>Precentral_L</td>
+          <td>L</td>
         </tr>
         <tr>
           <th>2</th>
-          <td>2101</td>
-          <td>Frontal_Sup_L</td>
-          <td>left</td>
+          <td>2</td>
+          <td>Precentral_R</td>
+          <td>R</td>
         </tr>
         <tr>
           <th>3</th>
-          <td>2102</td>
-          <td>Frontal_Sup_R</td>
-          <td>right</td>
+          <td>3</td>
+          <td>Frontal_Sup_2_L</td>
+          <td>L</td>
         </tr>
         <tr>
           <th>4</th>
-          <td>2111</td>
-          <td>Frontal_Sup_Orb_L</td>
-          <td>left</td>
+          <td>4</td>
+          <td>Frontal_Sup_2_R</td>
+          <td>R</td>
         </tr>
         <tr>
           <th>...</th>
@@ -222,50 +243,50 @@ indicating the indices of the atlas and details thereof.
           <td>...</td>
         </tr>
         <tr>
-          <th>111</th>
-          <td>9130</td>
-          <td>Vermis_6</td>
+          <th>162</th>
+          <td>166</td>
+          <td>Red_N_R</td>
+          <td>R</td>
+        </tr>
+        <tr>
+          <th>163</th>
+          <td>167</td>
+          <td>LC_L</td>
+          <td>L</td>
+        </tr>
+        <tr>
+          <th>164</th>
+          <td>168</td>
+          <td>LC_R</td>
+          <td>R</td>
+        </tr>
+        <tr>
+          <th>165</th>
+          <td>169</td>
+          <td>Raphe_D</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>112</th>
-          <td>9140</td>
-          <td>Vermis_7</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>113</th>
-          <td>9150</td>
-          <td>Vermis_8</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>114</th>
-          <td>9160</td>
-          <td>Vermis_9</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>115</th>
-          <td>9170</td>
-          <td>Vermis_10</td>
+          <th>166</th>
+          <td>170</td>
+          <td>Raphe_M</td>
           <td>NaN</td>
         </tr>
       </tbody>
     </table>
-    <p>116 rows × 3 columns</p>
+    <p>167 rows × 3 columns</p>
     </div>
     </div>
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-53
+.. GENERATED FROM PYTHON SOURCE LINES 50-51
 
 The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-60
+.. GENERATED FROM PYTHON SOURCE LINES 51-58
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import json
@@ -283,10 +304,10 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
  .. code-block:: none
 
     {
-        "Name": "Automated Anatomical Labeling Atlas - SPM12 version",
-        "Description": "AAl atlas for SPM 12. Notes: This atlas is the result of an automated anatomical parcellation\nof the spatially normalized single-subject high-resolution T1 volume provided by the\nMontreal Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans. Med. Imag. 17, 463-468, PubMed).\nUsing this parcellation method, three procedures to perform the automated anatomical labeling of functional\nstudies are proposed: (1) labeling of an extremum defined by a set of coordinates, (2) percentage of voxels belonging\nto each of the AVOI intersected by a sphere centered by a set of coordinates,\nand (3) percentage of voxels belonging to each of the AVOI intersected by an activated cluster.",
+        "Name": "Automated Anatomical Labeling Atlas - SPM12, 3v2 version",
+        "Description": "AAl atlas for SPM 12, 3v2 version. Notes: This atlas is the result of an automated anatomical parcellation\nof the spatially normalized single-subject high-resolution T1 volume provided by the\nMontreal Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans. Med. Imag. 17, 463-468, PubMed).\nUsing this parcellation method, three procedures to perform the automated anatomical labeling of functional\nstudies are proposed: (1) labeling of an extremum defined by a set of coordinates, (2) percentage of voxels belonging\nto each of the AVOI intersected by a sphere centered by a set of coordinates,\nand (3) percentage of voxels belonging to each of the AVOI intersected by an activated cluster.",
         "BIDSVersion": "PLEASE ADD",
-        "Curators": "PLEASE ADD",
+        "Authors": "PLEASE ADD",
         "HowToAcknowledge": "PLEASE ADD",
         "SourceDatasetsURLs": "PLEASE ADD",
         "License": "Unknown",
@@ -294,7 +315,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
         "ReferencesAndLinks": "http://www.gin.cnrs.fr/AAL-217?lang",
         "Species": "Homo sapiens",
         "DerivedFrom": "PLEASE ADD",
-        "LevelType": "Single-subject",
+        "SampleSize": "1",
         "SpecialReference": "PLEASE ADD"
     }
 
@@ -304,7 +325,7 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  5.091 seconds)
+   **Total running time of the script:** (0 minutes 6.266 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_AAL_example.py:
@@ -313,14 +334,17 @@ The latter comprises the atlas' metadata following ``BIDS`` specifications.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download Jupyter notebook: plot_AAL_example.ipynb <plot_AAL_example.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_AAL_example.py <plot_AAL_example.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_AAL_example.ipynb <plot_AAL_example.ipynb>`
+      :download:`Download zipped: plot_AAL_example.zip <plot_AAL_example.zip>`
 
 
 .. only:: html

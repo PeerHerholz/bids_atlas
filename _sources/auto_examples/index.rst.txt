@@ -19,6 +19,7 @@ is outlined in `Usage <./usage.rst>`_.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -27,7 +28,7 @@ is outlined in `Usage <./usage.rst>`_.
 .. only:: html
 
   .. image:: /auto_examples/images/thumb/sphx_glr_plot_AAL_example_thumb.png
-    :alt: Fetching BIDS-Atlas compliant atlases
+    :alt:
 
   :ref:`sphx_glr_auto_examples_plot_AAL_example.py`
 
@@ -36,6 +37,8 @@ is outlined in `Usage <./usage.rst>`_.
       <div class="sphx-glr-thumbnail-title">Fetching BIDS-Atlas compliant atlases</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -47,18 +50,6 @@ is outlined in `Usage <./usage.rst>`_.
 
    /auto_examples/plot_AAL_example
 
-
-.. only:: html
-
-  .. container:: sphx-glr-footer sphx-glr-footer-gallery
-
-    .. container:: sphx-glr-download sphx-glr-download-python
-
-      :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </auto_examples/auto_examples_jupyter.zip>`
 
 
 .. only:: html

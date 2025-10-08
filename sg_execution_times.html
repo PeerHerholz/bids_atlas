@@ -46,7 +46,7 @@
   
   
   
-    <title>Atlases &#8212; bids_atlas 0.post1+g89194f3 documentation</title>
+    <title>Computation times &#8212; bids_atlas 0.post1+g89194f3 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link rel="stylesheet" type="text/css" href="_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -60,8 +60,6 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="auto_examples/index.html" />
-    <link rel="prev" title="Usage" href="usage.html" />
   
    
 
@@ -80,7 +78,7 @@
   <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
   <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
   <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#atlases" tabindex="1" class="md-skip"> Skip to content </a>
+  <a href="#sg_execution_times" tabindex="1" class="md-skip"> Skip to content </a>
   <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
@@ -98,7 +96,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">BIDS Atlas</span>
-          <span class="md-header-nav__topic"> Atlases </span>
+          <span class="md-header-nav__topic"> Computation times </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -227,19 +225,7 @@
     <li class="md-nav__item">
     
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    <label class="md-nav__link md-nav__link--active" for="__toc"> Atlases </label>
-    
-      <a href="#" class="md-nav__link md-nav__link--active">Atlases</a>
-      
-        
-<nav class="md-nav md-nav--secondary">
-  <ul class="md-nav__list" data-md-scrollfix="">
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/atlases.rst.txt">Show Source</a> </li>
-
-  </ul>
-</nav>
+      <a href="atlases.html" class="md-nav__link">Atlases</a>
       
     
     </li>
@@ -285,7 +271,7 @@
 <nav class="md-nav md-nav--secondary">
   <ul class="md-nav__list" data-md-scrollfix="">
     
-<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/atlases.rst.txt">Show Source</a> </li>
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/sg_execution_times.rst.txt">Show Source</a> </li>
 
 <li id="searchbox" class="md-nav__item"></li>
 
@@ -298,9 +284,36 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="atlases">
-<h1 id="atlases--page-root">Atlases<a class="headerlink" href="#atlases--page-root" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">bids_atlas</span></code> provides access to a comprehensive collection of commonly used brain atlases. Each atlas is available through simple Python functions and comes with interactive visualizations and metadata.</p>
+  <section id="computation-times">
+<span id="sphx-glr-sg-execution-times"></span><h1 id="sg-execution-times--page-root">Computation times<a class="headerlink" href="#sg-execution-times--page-root" title="Link to this heading">¶</a></h1>
+<p><strong>00:06.266</strong> total execution time for 1 file <strong>from all galleries</strong>:</p>
+<div class="docutils container">
+<style scoped="">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script class="init" type="text/javascript">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_examples/plot_AAL_example.html#sphx-glr-auto-examples-plot-aal-example-py"><span class="std std-ref">Fetching BIDS-Atlas compliant atlases</span></a> (<code class="docutils literal notranslate"><span class="pre">../../examples/plot_AAL_example.py</span></code>)</p></td>
+<td><p>00:06.266</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
 
@@ -313,30 +326,6 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="usage.html" title="Usage"
-               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-               rel="prev">
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-              </div>
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                <span class="md-flex__ellipsis">
-                  <span
-                      class="md-footer-nav__direction"> "Previous" </span> Usage </span>
-              </div>
-            </a>
-          
-          
-            <a href="auto_examples/index.html" title="Examples"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> "Next" </span> Examples </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink"><i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           
         </a>
         
