@@ -1,8 +1,9 @@
 import os
+from shutil import copy2
 import seedir as sd
 from templateflow import api as tflow
 
-from bids_atlas.utils import check_output_path, resample_atlas_target, generate_json_sidecar_file
+from bids_atlas.utils import check_output_path, resample_atlas_target, generate_json_sidecar_file, download_template_metadata
 
 import pandas as pd
 
@@ -13,17 +14,17 @@ from nilearn import datasets
 # define function to get the AAL atlas
 def get_AAL(target_space=None, resolution=None, path=None):
     """
-    Download the AAL atlas in specified target space and resolution,
-    providing it in a BIDS-Atlas compliant manner.
+    Download the 3v2 SPM12 version of the AAL atlas in specified target
+    space and resolution, providing it in a BIDS-Atlas compliant manner.
 
     Parameters
     ----------
     target_space : string
         Target space the atlas should be provided in. If None, the atlas
-        will be provided in MNI152NLin6Asym. Default = None.
+        will be provided in MNIColin27. Default = None.
     resolution : string
-        Resolution the atlas should be provided in. If None, the atlas
-        will be provided in 2mm resolution. Default = None.
+        Resolution the atlas should be provided in. Currently, only template
+        resolution is supported. Default = None.
     path : string
         Path where the atlas will be saved. If None, the file will be saved
         in the current working directory. Default = None.
@@ -48,62 +49,75 @@ def get_AAL(target_space=None, resolution=None, path=None):
     # check input arguments and if not provided assign default
     # target_space will be actively supported soon
     if target_space is None:
-        target_space = 'MNI152NLin6Asym'
+        target_space = 'MNIColin27'
     else:
         print('Spatial transformations of atlases will soon be supported.')
-        print('At the moment only MNI152NLin6Asym is available.')
-        target_space = 'MNI152NLin6Asym'
-    if resolution is None:
-        resolution = 2
+        print('At the moment only MNIColin27 is available.')
+        target_space = 'MNIColin27'
+    if resolution is not None:
+        print('Currently, only template resolution (1mm) is supported for the AAL atlas.')
     if path is None:
         path = os.curdir
 
     # get the AAL atlas as provided by nilearn
-    aal_atlas = datasets.fetch_atlas_aal(version='SPM12')
+    aal_atlas = datasets.fetch_atlas_aal(version='3v2')
 
     # get the target/reference as provided by templateflow
-    target = tflow.get(target_space, desc='brain', resolution=resolution, suffix='T1w',
+    target = tflow.get(target_space, desc=None, suffix='T1w',
                        extension='nii.gz')
+
+    # get template resolution
+    resolution = str(int(nb.load(target).header.get_zooms()[0]))
 
     # resample the atlas to the indicated resolution if needed
     aal_atlas_nii = resample_atlas_target(aal_atlas.maps, target)
 
     # generate the output path
     outpath = check_output_path(path, atlas='AAL')
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
+
+    # copy the template to the atlas directory for reference
+    from shutil import copy2
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
 
     # generate the filename pattern
-    atlas_file_name = 'atlas-AAL_res-%s_dseg.nii.gz' % resolution
+    atlas_file_name = 'tpl-%s_atlas-AAL_res-%s_dseg.nii.gz' % (target_space, resolution)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(aal_atlas_nii, os.path.join(outpath, atlas_file_name))
+    nb.save(aal_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
     aal_df = pd.DataFrame({'Index': aal_atlas.indices,
                            'Label': aal_atlas.labels,
-                           'Hemisphere': ['left' if '_L' in label else 'right' if "_R" in label else 'NA' for label in aal_atlas.labels]
+                           'Hemisphere': ['L' if '_L' in label else 'R' if "_R" in label else 'NA' for label in aal_atlas.labels]
                            })
     
     # save the atlas .tsv file
-    aal_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                  index=False)
+    aal_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                  sep='\t', index=False)
 
     # generate the atlas json sidecar file
-    generate_json_sidecar_file('AAL',
-                               os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')))
+    generate_json_sidecar_file('AAL', outpath)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    aal_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                      'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                      'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    aal_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                      'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                      'AtlasJson': os.path.join(outpath, 'atlas-AAL_description.json')}
 
     return aal_atlas_dict
 
 
 # define function to get the Destrieux atlas
-def get_Destrieux(target_space=None, resolution=None, path=None):
+def get_Destrieux(target_space=None, resolution=None, lateralized=True, path=None):
     """
     Download the Destrieux atlas in specified target space and resolution,
     providing it in a BIDS-Atlas compliant manner.
@@ -112,10 +126,12 @@ def get_Destrieux(target_space=None, resolution=None, path=None):
     ----------
     target_space : string
         Target space the atlas should be provided in. If None, the atlas
-        will be provided in MNI152NLin6Asym. Default = None.
+        will be provided in fsaverage. Default = None.
     resolution : string
         Resolution the atlas should be provided in. If None, the atlas
-        will be provided in 2mm resolution. Default = None.
+        will be provided in 1mm resolution. Default = None.
+    lateralized : boolean
+        If True, returns an atlas with distinct regions for right and left hemispheres.
     path : string
         Path where the atlas will be saved. If None, the file will be saved
         in the current working directory. Default = None.
@@ -140,56 +156,65 @@ def get_Destrieux(target_space=None, resolution=None, path=None):
     # check input arguments and if not provided assign default
     # target_space will be actively supported soon
     if target_space is None:
-        target_space = 'MNI152NLin6Asym'
+        target_space = 'fsaverage'
     else:
         print('Spatial transformations of atlases will soon be supported.')
-        print('At the moment only MNI152NLin6Asym is available.')
-        target_space = 'MNI152NLin6Asym'
+        print('At the moment only fsaverage is available.')
+        target_space = 'fsaverage'
     if resolution is None:
-        resolution = 2
+        resolution = 1
     if path is None:
         path = os.curdir
 
     # get the Destrieux atlas as provided by nilearn
-    destrieux_atlas = datasets.fetch_atlas_destrieux_2009()
+    destrieux_atlas = datasets.fetch_atlas_destrieux_2009(lateralized=lateralized)
 
     # get the target/reference as provided by templateflow
-    target = tflow.get(target_space, desc='brain', resolution=resolution, suffix='T1w',
-                       extension='nii.gz')
+    target = tflow.get(target_space, resolution=resolution, suffix='T1w',
+                       extension='nii.gz')[1]
 
     # resample the atlas to the indicated resolution if needed
     destrieux_atlas_nii = resample_atlas_target(destrieux_atlas.maps, target)
 
     # generate the output path
     outpath = check_output_path(path, atlas='Destrieux')
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
+
+    # copy the template to the atlas directory for reference
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
 
     # generate the filename pattern
-    atlas_file_name = 'atlas-Destrieux_res-%s_dseg.nii.gz' % resolution
+    atlas_file_name = 'tpl-%s_atlas-Destrieux_res-%s_dseg.nii.gz' % (target_space, resolution)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(destrieux_atlas_nii, os.path.join(outpath, atlas_file_name))
+    nb.save(destrieux_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
-    destrieux_df = pd.DataFrame({'Index': [ind[0] for ind in destrieux_atlas.labels],
-                                 'Label': [ind[1] for ind in destrieux_atlas.labels],
-                                 'Hemisphere': ['left' if 'L' in label[1] else 'right' if "R" in label[1] else 'NA' for label in destrieux_atlas.labels]
+    destrieux_df = pd.DataFrame({'Index': [i for i, label in enumerate(destrieux_atlas.labels)],
+                                 'Label': [label.split(' ', 1)[1] if ' ' in label else label for i, label in enumerate(destrieux_atlas.labels)],
+                                 'Hemisphere': ['L' if 'L ' in label else 'R' if 'R ' in label else 'NA' for i, label in enumerate(destrieux_atlas.labels)]
                                  })
     
     # save the atlas .tsv file
-    destrieux_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                        index=False)
+    destrieux_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                        sep='\t', index=False)
 
     # generate the atlas json sidecar file
-    generate_json_sidecar_file('Destrieux',
-                               os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')))
+    generate_json_sidecar_file('Destrieux', outpath)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    destrieux_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                            'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                            'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    destrieux_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                            'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                            'AtlasJson': os.path.join(outpath, 'atlas-Destrieux_description.json')}
 
     return destrieux_atlas_dict
 
@@ -253,46 +278,65 @@ def get_HarvardOxford(target_space=None, resolution=None, type='dseg', threshold
     # generate the output path
     outpath = check_output_path(path, atlas='HarvardOxford')
 
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
+
+    # get the target/reference as provided by templateflow
+    target = tflow.get(target_space, desc=None, resolution=resolution, suffix='T1w',
+                       extension='nii.gz')
+
+    # copy the template to the atlas directory for reference
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
+
+    # check which atlas type should be provided
+    # get the dseg version
     if type == 'dseg':
         # get the Harvard-Oxford atlas as provided by nilearn, deterministic version
         harvardoxford_atlas = datasets.fetch_atlas_harvard_oxford(atlas_name='cort-maxprob-thr%s-%smm' % (threshold, resolution),
                                                                   symmetric_split=True)
         # generate the filename pattern
-        atlas_file_name = 'atlas-HarvardOxford_res-%s_desc-thr%s_dseg.nii.gz' % (resolution, threshold)
+        atlas_file_name = 'tpl-%s_atlas-HarvardOxford_res-%s_desc-thr%s_dseg.nii.gz' % (target_space, resolution, threshold)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('HarvardOxford',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='dseg')
+        generate_json_sidecar_file('HarvardOxford', outpath)
+    # get the probseg version
     else:
         # get the Harvard-Oxford atlas as provided by nilearn, probabilistic version
         harvardoxford_atlas = datasets.fetch_atlas_harvard_oxford(atlas_name='cort-prob-%smm' % resolution)
         # generate the filename pattern
-        atlas_file_name = 'atlas-HarvardOxford_res-%s_probseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-HarvardOxford_res-%s_probseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('HarvardOxford',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='probseg')
+        generate_json_sidecar_file('HarvardOxford', outpath)
+
+    # resample the atlas to the indicated resolution if needed
+    harvardoxford_atlas_nii = resample_atlas_target(harvardoxford_atlas.maps, target)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(harvardoxford_atlas.maps, os.path.join(outpath, atlas_file_name))
+    nb.save(harvardoxford_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
     ho_df = pd.DataFrame({'Index': [i for i, label in enumerate(harvardoxford_atlas.labels)],
                           'Label': [label for i, label in enumerate(harvardoxford_atlas.labels)],
-                          'Hemisphere': ['left' if 'Left' in label[1] else 'right' if "Right" in label[1] else 'bilateral' for label in enumerate(harvardoxford_atlas.labels)]
+                          'Hemisphere': ['L' if 'Left' in label[1] else 'R' if "Right" in label[1] else 'B' for label in enumerate(harvardoxford_atlas.labels)]
                           })
     
     # save the atlas .tsv file
-    ho_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                 index=False)
+    ho_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                 sep='\t', index=False)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    ho_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                     'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                     'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    ho_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                     'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                     'AtlasJson': os.path.join(outpath, 'atlas-HarvardOxford_description.json')}
 
     return ho_atlas_dict
 
@@ -312,8 +356,9 @@ def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
         Resolution the atlas should be provided in. If None, the atlas
         will be provided in 2mm resolution. Default = None.
     level : string
-        Level the atlas should be provided in. If None, the atlas
-        will be provided based on gyri. Default = 'gyrus'.
+        Level the atlas should be provided in. Choices are 'gyrus', 'hemisphere',
+        'lobe', 'tissue', 'ba'. If None, the atlas will be provided based on gyri.
+        Default = 'gyrus'.
     path : string
         Path where the atlas will be saved. If None, the file will be saved
         in the current working directory. Default = None.
@@ -350,79 +395,91 @@ def get_Talairach(target_space=None, resolution=None, level='gyrus', path=None):
 
     # generate the output path
     outpath = check_output_path(path, atlas='Talairach')
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
+
+    # get the target/reference as provided by templateflow
+    target = tflow.get(target_space, desc=None, resolution=resolution, suffix='T1w',
+                       extension='nii.gz')
+
+    # copy the template to the atlas directory for reference
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
 
     if level == 'gyrus':
         # get the Talairach atlas as provided by nilearn, deterministic version
         talairach_atlas = datasets.fetch_atlas_talairach(level_name='gyrus')
         # generate the filename pattern
-        atlas_file_name = 'atlas-Talairach_res-%s_desc-gyrus_dseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Talairach_res-%s_desc-gyrus_dseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Talairach',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='gyrus')
+        generate_json_sidecar_file('Talairach', outpath)
     elif level == 'hemisphere':
         # get the Talairach atlas as provided by nilearn, deterministic version
         talairach_atlas = datasets.fetch_atlas_talairach(level_name='hemisphere')
         # generate the filename pattern
-        atlas_file_name = 'atlas-Talairach_res-%s_desc-hemisphere_dseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Talairach_res-%s_desc-hemisphere_dseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Talairach',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='hemisphere')
+        generate_json_sidecar_file('Talairach', outpath)
     elif level == 'lobe':
         # get the Talairach atlas as provided by nilearn, deterministic version
         talairach_atlas = datasets.fetch_atlas_talairach(level_name='lobe')
         # generate the filename pattern
-        atlas_file_name = 'atlas-Talairach_res-%s_desc-lobe_dseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Talairach_res-%s_desc-lobe_dseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Talairach',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='lobe')
+        generate_json_sidecar_file('Talairach', outpath)
     elif level == 'tissue':
         # get the Talairach atlas as provided by nilearn, deterministic version
         talairach_atlas = datasets.fetch_atlas_talairach(level_name='tissue')
         # generate the filename pattern
-        atlas_file_name = 'atlas-Talairach_res-%s_desc-tissue_dseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Talairach_res-%s_desc-tissue_dseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Talairach',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='tissue')
+        generate_json_sidecar_file('Talairach', outpath)
     elif level == 'ba':
         # get the Talairach atlas as provided by nilearn, deterministic version
         talairach_atlas = datasets.fetch_atlas_talairach(level_name='ba')
         # generate the filename pattern
-        atlas_file_name = 'atlas-Talairach_res-%s_desc-ba_dseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Talairach_res-%s_desc-ba_dseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Talairach',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='ba')
+        generate_json_sidecar_file('Talairach', outpath)
+
+    # resample the atlas to the indicated resolution if needed
+    talairach_atlas_nii = resample_atlas_target(talairach_atlas.maps, target)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(talairach_atlas.maps, os.path.join(outpath, atlas_file_name))
+    nb.save(talairach_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
     talairach_df = pd.DataFrame({'Index': [i for i, label in enumerate(talairach_atlas.labels)],
                                  'Label': [label for i, label in enumerate(talairach_atlas.labels)],
-                                 'Hemisphere': 'bilateral'
+                                 'Hemisphere': 'B'
                                  })
     
     # save the atlas .tsv file
-    talairach_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                        index=False)
+    talairach_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                        sep='\t', index=False)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    talairach_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                            'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                            'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    talairach_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                            'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                            'AtlasJson': os.path.join(outpath, 'atlas-Talairach_description.json')}
 
     return talairach_atlas_dict
 
 
 # define function to get the Juelich atlas
-def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None, path=None):
+def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None, symmetric_split=False, path=None):
     """
     Download the Juelich atlas in specified target space and resolution,
     providing it in a BIDS-Atlas compliant manner.
@@ -433,14 +490,18 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
         Target space the atlas should be provided in. If None, the atlas
         will be provided in MNI152NLin6Asym. Default = None.
     resolution : string
-        Resolution the atlas should be provided in. If None, the atlas
-        will be provided in 2mm resolution. Default = None.
+        Resolution the atlas should be provided in. Choices are '1mm' or '2mm'.
+        If None, the atlas will be provided in 2mm resolution. Default = None.
     type : string
-        Type the atlas should be provided in. If None, the atlas
-        will be provided as dseg. Default = 'dseg'.
+        Type the atlas should be provided in. Choices are 'dseg' or 'probseg'.
+        If None, the atlas will be provided as dseg. Default = 'dseg'.
     threshold : string
-        Threshold the atlas should be provided in. If None, the threshold
-        will be set as 25. Default = '25'.
+        Threshold the atlas should be provided in. Choices are '25' or '50'. 
+        If None, the threshold will be set as 25. Default = '25'.
+    symmetric_split : bool
+        If True, returns lateralized atlases for deterministic (dseg) type.
+        For subcortical regions, splits every symmetric region into left and
+        right parts, effectively doubling the number of regions. Default = False.
     path : string
         Path where the atlas will be saved. If None, the file will be saved
         in the current working directory. Default = None.
@@ -460,6 +521,10 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
     and indicate a resolution.
 
     >>> get_Juelich(resolution=1, path='/home/user/Desktop')
+
+    Download the Juelich atlas with symmetric splitting enabled.
+
+    >>> get_Juelich(symmetric_split=True)
     """
 
     # check input arguments and if not provided assign default
@@ -479,55 +544,71 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
 
     # generate the output path
     outpath = check_output_path(path, atlas='Juelich')
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
+
+    # get the target/reference as provided by templateflow
+    target = tflow.get(target_space, desc=None, resolution=resolution, suffix='T1w',
+                       extension='nii.gz')
+
+    # copy the template to the atlas directory for reference
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
 
     if type == 'dseg':
-        # get the Harvard-Oxford atlas as provided by nilearn, deterministic version
+        # get the Juelich atlas as provided by nilearn, deterministic version
         juelich_atlas = datasets.fetch_atlas_juelich(atlas_name='maxprob-thr%s-%smm' % (threshold, resolution),
-                                                     symmetric_split=True)
+                                                     symmetric_split=symmetric_split)
         # generate the filename pattern
-        atlas_file_name = 'atlas-Juelich_res-%s_desc-thr%s_dseg.nii.gz' % (resolution, threshold)
+        atlas_file_name = 'tpl-%s_atlas-Juelich_res-%s_desc-thr%s_dseg.nii.gz' % (target_space, resolution, threshold)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Juelich',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='dseg')
+        generate_json_sidecar_file('Juelich', outpath)
     else:
-        # get the Harvard-Oxford atlas as provided by nilearn, probabilistic version
+        # get the Juelich atlas as provided by nilearn, probabilistic version
         juelich_atlas = datasets.fetch_atlas_juelich(atlas_name='prob-%smm' % resolution)
+        
         # generate the filename pattern
-        atlas_file_name = 'atlas-Juelich_res-%s_probseg.nii.gz' % resolution
+        atlas_file_name = 'tpl-%s_atlas-Juelich_res-%s_probseg.nii.gz' % (target_space, resolution)
 
         # generate the atlas json sidecar file
-        generate_json_sidecar_file('Juelich',
-                                   os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')), version='probseg')
+        generate_json_sidecar_file('Juelich', outpath)
+
+    # resample the atlas to the indicated resolution if needed
+    juelich_atlas_nii = resample_atlas_target(juelich_atlas.maps, target)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(juelich_atlas.maps, os.path.join(outpath, atlas_file_name))
+    nb.save(juelich_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
     juelich_df = pd.DataFrame({'Index': [i for i, label in enumerate(juelich_atlas.labels)],
-                               'Label': [label for i, label in enumerate(juelich_atlas.labels)],
-                               'Hemisphere': ['left' if 'Left' in label[1] else 'right' if "Right" in label[1] else 'bilateral' for label in enumerate(juelich_atlas.labels)]
+                               'Label': [label.split(' ', 1)[1] if ' ' in label else label for i, label in enumerate(juelich_atlas.labels)],
+                               'Hemisphere': ['L' if 'Left ' in label else 'R' if 'Right ' in label else 'B' for i, label in enumerate(juelich_atlas.labels)]
                                })
     
     # save the atlas .tsv file
-    juelich_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                      index=False)
+    juelich_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                      sep='\t', index=False)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    juelich_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                          'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                          'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    juelich_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                          'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                          'AtlasJson': os.path.join(outpath, 'atlas-Juelich_description.json')}
 
     return juelich_atlas_dict
 
 
 # define function to get the Schaefer atlas
-def get_Schaefer(target_space=None, resolution=None, n_rois='100', roi_annotation='7', path=None):
+def get_Schaefer2018(target_space=None, resolution=None, n_rois='100', roi_annotation='7', path=None):
     """
-    Download the Schaefer atlas in specified target space and resolution,
+    Download the Schaefer2018 atlas in specified target space and resolution,
     providing it in a BIDS-Atlas compliant manner.
 
     Parameters
@@ -580,43 +661,52 @@ def get_Schaefer(target_space=None, resolution=None, n_rois='100', roi_annotatio
 
     # generate the output path
     outpath = check_output_path(path, atlas='Schaefer')
+    os.makedirs(os.path.join(outpath, 'tpl-' + target_space, 'anat'), exist_ok=True)
+
+    tpl_path = os.path.join(outpath, 'tpl-' + target_space, 'anat')
 
     # get the Schaefer atlas as provided by nilearn
     schaefer_atlas = datasets.fetch_atlas_schaefer_2018(n_rois=int(n_rois), yeo_networks=int(roi_annotation))
     
     # get the target/reference as provided by templateflow
-    target = tflow.get(target_space, desc='brain', resolution=resolution, suffix='T1w',
+    target = tflow.get(target_space, desc=None, resolution=resolution, suffix='T1w',
                        extension='nii.gz')
 
     # resample the atlas to the indicated resolution if needed
     schaefer_atlas_nii = resample_atlas_target(schaefer_atlas.maps, target)
 
+    # copy the template to the atlas directory for reference
+    copy2(target, os.path.join(tpl_path, str(target).split('/')[-1]))
+
+    # download the template metadata file
+    template_metadata_path = os.path.join(tpl_path, 'tpl-%s.json' % target_space)
+    download_template_metadata(target_space, template_metadata_path)
+
     # generate the filename pattern
-    atlas_file_name = 'atlas-Schaefer%s_res-%s_probseg.nii.gz' % (n_rois, resolution)
+    atlas_file_name = 'tpl-%s_atlas-Schaefer2018_res-%s_desc-%sParcels%sNetworks_probseg.nii.gz' % (target_space, resolution, n_rois, roi_annotation)
 
     # generate the atlas json sidecar file
-    generate_json_sidecar_file('Schaefer',
-                               os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json')))
+    generate_json_sidecar_file('Schaefer', outpath)
 
     # save the atlas at the indicated path with the generated filename
-    nb.save(schaefer_atlas_nii, os.path.join(outpath, atlas_file_name))
+    nb.save(schaefer_atlas_nii, os.path.join(tpl_path, atlas_file_name))
 
     # create the atlas .tsv file
     schaefer_df = pd.DataFrame({'Index': [i for i, label in enumerate(schaefer_atlas.labels)],
-                                'Label': [label.decode("utf-8") for i, label in enumerate(schaefer_atlas.labels)],
-                                'Hemisphere': ['left' if 'LH' in label[1].decode("utf-8") else 'right' if "RH" in label[1].decode("utf-8") else 'bilateral' for label in enumerate(schaefer_atlas.labels)]
+                                'Label': [label for i, label in enumerate(schaefer_atlas.labels)],
+                                'Hemisphere': ['left' if 'LH' in label[1] else 'right' if "RH" in label[1] else 'bilateral' for label in enumerate(schaefer_atlas.labels)]
                                 })
     
     # save the atlas .tsv file
-    schaefer_df.to_csv(os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                       index=False)
+    schaefer_df.to_csv(os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                       sep='\t', index=False)
 
     # print a message indicating what files were downloaded where
     print('The following files were downloaded at %s' % outpath)
     sd.seedir(outpath)
 
-    schaefer_atlas_dict = {'AtlasImage': os.path.join(outpath, atlas_file_name),
-                           'AtlasTSV': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.tsv')),
-                           'AtlasJson': os.path.join(outpath, atlas_file_name.replace('.nii.gz', '.json'))}
+    schaefer_atlas_dict = {'AtlasImage': os.path.join(tpl_path, atlas_file_name),
+                           'AtlasTSV': os.path.join(tpl_path, atlas_file_name.replace('.nii.gz', '.tsv')),
+                           'AtlasJson': os.path.join(outpath, 'atlas-Schaefer_description.json')}
 
     return schaefer_atlas_dict
