@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich, get_Schaefer
+from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich, get_Schaefer2018
 
 
 # define parser to collect required inputs
@@ -83,8 +83,8 @@ def run_bids_atlas():
     elif args.atlas == 'Schaefer':
 
         # download the Schaefer atlas and set user-defined input
-        get_Schaefer(target_space='MNI152NLin6Asym', n_rois=args.n_rois, roi_annotation=args.roi_annotation,
-                     resolution=args.resolution, path=args.bids_atlas_dir)
+        get_Schaefer2018(target_space='MNI152NLin6Asym', n_rois=args.n_rois, roi_annotation=args.roi_annotation,
+                         resolution=args.resolution, path=args.bids_atlas_dir)
 
 
 # run the CLI

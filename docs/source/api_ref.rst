@@ -22,11 +22,12 @@ Reference API
    :template: function.rst
    :toctree: generated/
 
-   bids_atlas.datasets.get_AAL
-   bids_atlas.datasets.get_Destrieux
-   bids_atlas.datasets.get_HarvardOxford
-   bids_atlas.datasets.get_Talairach
-   bids_atlas.datasets.get_Juelich
+   get_AAL
+   get_Destrieux
+   get_HarvardOxford
+   get_Talairach
+   get_Juelich
+   get_Schaefer2018
 
 .. _ref_utils:
 
@@ -42,6 +43,6 @@ Reference API
    :template: function.rst
    :toctree: generated/
 
-   bids_atlas.utils.check_output_path
-   bids_atlas.utils.resample_atlas_target
-   bids_atlas.utils.generate_json_sidecar_file
+   check_output_path
+   resample_atlas_target
+   generate_json_sidecar_file
