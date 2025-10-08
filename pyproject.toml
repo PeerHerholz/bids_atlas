@@ -18,3 +18,10 @@ exclude = '''
   | tests/data
 )/
 '''
+
+[tool.pytest.ini_options]
+testpaths = ["bids_atlas/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

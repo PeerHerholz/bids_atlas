@@ -20,6 +20,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
+import sphinx_material
 
 
 # -- General configuration ------------------------------------------------
@@ -111,7 +112,6 @@ todo_include_todos = False
 # a list of builtin themes.
 #
 extensions.append('sphinx_material')
-import sphinx_material
 html_theme_path = sphinx_material.html_theme_path()
 html_context = sphinx_material.get_html_context()
 html_theme = 'sphinx_material'

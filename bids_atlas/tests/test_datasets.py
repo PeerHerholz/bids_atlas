@@ -2,7 +2,11 @@ import os
 import pandas as pd
 import nibabel as nb
 import pytest
-from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich, get_Schaefer2018
+
+try:
+    from ..datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich, get_Schaefer2018
+except ImportError:
+    from bids_atlas.datasets import get_AAL, get_Destrieux, get_HarvardOxford, get_Talairach, get_Juelich, get_Schaefer2018
 
 
 @pytest.fixture

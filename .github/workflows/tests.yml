@@ -1,4 +1,4 @@
-name: tests & build
+name: tests
 
 on:
   # run it on push to the default repository branch
@@ -29,9 +29,16 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Install bids_atlas
       run: |
-        pip install ./
+        pip install -e ./
+    - name: Debug structure
+      run: |
+        find . -name "test_*.py" -type f
+        ls -la bids_atlas/tests/
     - name: Test code
       shell: bash -l {0}
       run: |
-        pytest
+        python -m pytest bids_atlas/tests/ -v
+    - name: Lint code
+      shell: bash -l {0}
+      run: |
         flake8
