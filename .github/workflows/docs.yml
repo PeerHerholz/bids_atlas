@@ -1,9 +1,12 @@
-name: tests & build
+name: build docs
 
 on:
+  # run it on push to the default repository branch
   push:
-    branches:
-    - main
+    branches: [main]
+  # run it during pull request
+  pull_request:
+
 
 jobs:
   build:
