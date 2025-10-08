@@ -11,7 +11,7 @@ generate_docker() {
              --arg DEBIAN_FRONTEND=noninteractive \
              --miniconda \
                version=latest \
-               conda_install="python=3.8" \
+               conda_install="python=3.10" \
                pip_install="nilearn pandas seedir" \
                create_env='bids_atlas' \
                activate=true \

@@ -7,7 +7,7 @@ import versioneer
 # NOTE: This file must remain Python 2 compatible for the foreseeable future,
 # to ensure that we error out properly for people with outdated setuptools
 # and/or pip.
-min_version = (3, 8)
+min_version = (3, 10)
 if sys.version_info < min_version:
     error = """
 bids_atlas does not support Python {0}.{1}.
@@ -37,7 +37,7 @@ setup(
     name='bids_atlas',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description="A small package to implement conversions between BEP-16 (Diffusion Derivatives) compliant datasets and other/existing software outputs.",
+    description="A small package to get commonly used atlases in a BIDS Atlas compliant form.",
     long_description=readme,
     author="Brain Imaging Data Structure",
     author_email='herholz.peer@gmail.com',
@@ -64,5 +64,8 @@ setup(
         'Development Status :: 2 - Pre-Alpha',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
 )

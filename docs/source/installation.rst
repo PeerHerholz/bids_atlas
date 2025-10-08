@@ -4,7 +4,7 @@ Installation
 
 In general, there are two distinct ways to install and use ``bids_atlas``:
 either through virtualization/container technology, that is `Docker`_ or
-`Singularity`_, or in a `Bare metal version (Python 3.8+)`_.
+`Singularity`_, or in a `Bare metal version (Python 3.10+)`_.
 Once you are ready to run ``bids_atlas``, see `Usage <./usage.rst>`_ for details.
 
 Docker
@@ -180,10 +180,10 @@ Running a Singularity Image
         /my_images/bids_atlas-<version>.simg \
         AAL
 
-Bare metal version (Python 3.8+)
-===========================================
+Bare metal version (Python 3.10+)
+=================================
 
-``bids_atlas`` is written using Python 3.8 (or above).
+``bids_atlas`` is written using Python 3.10 (or above).
 Until the first official version/release will be provided, `bids_atlas`'s bare metal version can be installed by opening a terminal and running the following:
 
 .. code-block:: bash
@@ -192,7 +192,7 @@ Until the first official version/release will be provided, `bids_atlas`'s bare m
     cd bids_atlas
     pip install .
 
-Please note that you need to have at least `Python 3.8` installed.
+Please note that you need to have at least `Python 3.10` installed.
 
 Check your installation with the ``--version`` argument:
 
