@@ -44,7 +44,7 @@ plot_roi(AAL_atlas['AtlasImage'], draw_cross=False, cmap='Set2')
 # The .tsv and .json files contain important information and metadata concerning the atlas. The former entails a DataFrame
 # indicating the indices of the atlas and details thereof.
 
-pd.read_csv(AAL_atlas['AtlasTSV'])
+pd.read_csv(AAL_atlas['AtlasTSV'], sep='\t')
 
 ###############################################################################
 # The latter comprises the atlas' metadata following ``BIDS`` specifications.

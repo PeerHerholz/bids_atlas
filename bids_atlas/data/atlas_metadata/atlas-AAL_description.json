@@ -1,6 +1,6 @@
 {
-    "Name": "Automated Anatomical Labeling Atlas - SPM12 version",
-    "Description": "AAl atlas for SPM 12. Notes: This atlas is the result of an automated anatomical parcellation\nof the spatially normalized single-subject high-resolution T1 volume provided by the\nMontreal Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans. Med. Imag. 17, 463-468, PubMed).\nUsing this parcellation method, three procedures to perform the automated anatomical labeling of functional\nstudies are proposed: (1) labeling of an extremum defined by a set of coordinates, (2) percentage of voxels belonging\nto each of the AVOI intersected by a sphere centered by a set of coordinates,\nand (3) percentage of voxels belonging to each of the AVOI intersected by an activated cluster.",
+    "Name": "Automated Anatomical Labeling Atlas - SPM12, 3v2 version",
+    "Description": "AAl atlas for SPM 12, 3v2 version. Notes: This atlas is the result of an automated anatomical parcellation\nof the spatially normalized single-subject high-resolution T1 volume provided by the\nMontreal Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans. Med. Imag. 17, 463-468, PubMed).\nUsing this parcellation method, three procedures to perform the automated anatomical labeling of functional\nstudies are proposed: (1) labeling of an extremum defined by a set of coordinates, (2) percentage of voxels belonging\nto each of the AVOI intersected by a sphere centered by a set of coordinates,\nand (3) percentage of voxels belonging to each of the AVOI intersected by an activated cluster.",
     "BIDSVersion": "PLEASE ADD",
     "Authors": "PLEASE ADD",
     "HowToAcknowledge": "PLEASE ADD",
