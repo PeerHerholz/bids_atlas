@@ -538,4 +538,3 @@ def test_download_Schaefer2018_custom_path(tmp_path):
     assert str(tmp_path) in Schaefer_atlas['AtlasImage']
     assert str(tmp_path) in Schaefer_atlas['AtlasTSV']
     assert str(tmp_path) in Schaefer_atlas['AtlasJson']
-

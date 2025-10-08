@@ -2,11 +2,8 @@ import os
 from shutil import copy2
 import seedir as sd
 from templateflow import api as tflow
-
 from bids_atlas.utils import check_output_path, resample_atlas_target, generate_json_sidecar_file, download_template_metadata
-
 import pandas as pd
-
 import nibabel as nb
 from nilearn import datasets
 
@@ -496,7 +493,7 @@ def get_Juelich(target_space=None, resolution=None, type='dseg', threshold=None,
         Type the atlas should be provided in. Choices are 'dseg' or 'probseg'.
         If None, the atlas will be provided as dseg. Default = 'dseg'.
     threshold : string
-        Threshold the atlas should be provided in. Choices are '25' or '50'. 
+        Threshold the atlas should be provided in. Choices are '25' or '50'.
         If None, the threshold will be set as 25. Default = '25'.
     symmetric_split : bool
         If True, returns lateralized atlases for deterministic (dseg) type.
