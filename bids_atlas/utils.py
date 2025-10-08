@@ -40,7 +40,7 @@ def check_output_path(path, atlas):
     """
 
     # generate full path to atlas based on indicated output directory and atlas name
-    atlas_path = os.path.join(os.path.abspath(path), 'bids_atlas_datasets', atlas)
+    atlas_path = os.path.join(os.path.abspath(path), 'bids_atlas_datasets', 'atlas-' + atlas)
 
     # check if the path exists and if not create it
     if os.path.isdir(atlas_path) is False:
@@ -112,7 +112,7 @@ def resample_atlas_target(atlas, target):
         return atlas_resampled
 
 
-def generate_json_sidecar_file(atlas_name, filename, version=None):
+def generate_json_sidecar_file(atlas_name, path):
     """
     Create .json file for the obtained atlas.
 
@@ -120,10 +120,8 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
     ----------
     atlas_name : str
         The name of the atlas.
-    filename : str
-        The file naming pattern of the atlas.
-    version : str
-        The version of the atlas.
+    path : string
+        Path where the json sidecar will be saved.
 
     Returns
     -------
@@ -133,78 +131,75 @@ def generate_json_sidecar_file(atlas_name, filename, version=None):
     --------
     Create dataset_description.json for the AAL atlas.
 
-    >>>generate_json_sidecar_file('AAL', '/home/user/bids_atlas_datasets/AAL/atlas-AAL_res-2_dseg.nii.gz')
+    >>>generate_json_sidecar_file('AAL', '/home/user/bids_atlas_datasets/atlas-AAL')
     """
     
     # check which atlas was provided and copy the respective metadata template to the corresponding directory
     if atlas_name == 'AAL':
 
         # get metadata for atlas
-        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-AAL_dseg.json')
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-AAL_description.json')
 
     elif atlas_name == 'Destrieux':
 
         # get metadata for atlas
-        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Destrieux_dseg.json')
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Destrieux_description.json')
     
     elif atlas_name == 'HarvardOxford':
 
-        # get version-specific metadata
-        if version == 'dseg':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_dseg.json')
-
-        elif version == 'probseg':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_probseg.json')
+        # get metadata for atlas
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-HarvardOxford_description.json')
 
     elif atlas_name == 'Talairach':
 
-        # get version-specific metadata
-        if version == 'gyrus':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-gyrus.json')
-
-        elif version == 'hemisphere':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-hemisphere.json')
-
-        elif version == 'lobe':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-lobe.json')
-
-        elif version == 'tissue':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-tissue.json')
-
-        elif version == 'ba':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_desc-ba.json')
-
+        # get metadata for atlas
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Talairach_description.json')
+   
     elif atlas_name == 'Juelich':
 
-        # get version-specific metadata
-        if version == 'dseg':
+        # get metadata for atlas
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_description.json')
 
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_dseg.json')
-
-        elif version == 'probseg':
-
-            # get metadata for atlas
-            json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Juelich_probseg.json')
-    
     elif atlas_name == 'Schaefer':
 
         # get metadata for atlas
-        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Schaefer_probseg.json')
+        json_metadata = importlib_resources.files(__name__).joinpath('data/atlas_metadata/atlas-Schaefer_description.json')
 
     # copy the atlas to the required directory
-    copyfile(json_metadata, filename)
+    copyfile(json_metadata, os.path.join(path, str(json_metadata).split('/')[-1]))
+
+
+def download_template_metadata(target_space, output_path):
+    """
+    Download template metadata from templateflow GitHub repository.
+
+    Parameters
+    ----------
+    target_space : str
+        The target space/template name (e.g., 'MNI152NLin6Asym').
+    output_path : str
+        Path where the template_description.json file should be saved.
+
+    Returns
+    -------
+    bool
+        True if download was successful, False otherwise.
+
+    Examples
+    --------
+    Download template metadata for MNI152NLin6Asym space.
+
+    >>> download_template_metadata('MNI152NLin6Asym', '/path/to/output/template_description.json')
+    """
+    import urllib.request
+    
+    # construct the URL for the template metadata
+    template_metadata_url = f'https://raw.githubusercontent.com/templateflow/tpl-{target_space}/master/template_description.json'
+    
+    try:
+        urllib.request.urlretrieve(template_metadata_url, output_path)
+        print(f'Downloaded template metadata to {output_path}')
+        return True
+    except Exception as e:
+        print(f'Warning: Could not download template metadata from {template_metadata_url}: {e}')
+        return False

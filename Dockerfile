@@ -60,7 +60,7 @@ RUN export PATH="/opt/miniconda-latest/bin:$PATH" \
     && sync && conda clean -y --all && sync \
     && conda create -y -q --name bids_atlas \
     && conda install -y -q --name bids_atlas \
-           "python=3.8" \
+           "python=3.10" \
     && sync && conda clean -y --all && sync \
     && bash -c "source activate bids_atlas \
     &&   pip install --no-cache-dir  \
@@ -101,7 +101,7 @@ RUN echo '{ \
     \n      { \
     \n        "version": "latest", \
     \n        "conda_install": [ \
-    \n          "python=3.8" \
+    \n          "python=3.10" \
     \n        ], \
     \n        "pip_install": [ \
     \n          "nilearn", \

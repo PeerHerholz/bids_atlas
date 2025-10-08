@@ -19,7 +19,7 @@
 #
 import os
 import sys
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- General configuration ------------------------------------------------
@@ -192,7 +192,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'bids_atlas', 'bids_atlas Documentation',
-     author, 'bids_atlas', 'A small package to implement conversions between BEP-16 (Diffusion Derivatives) compliant datasets and other/existing software outputs.',
+     author, 'bids_atlas', 'A small python package to access publicly available brain atlases in a BIDS-Atlas compliant manner.',
      'Miscellaneous'),
 ]
 
