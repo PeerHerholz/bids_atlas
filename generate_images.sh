@@ -18,7 +18,7 @@ generate_docker() {
   # Use neurodocker container to generate Dockerfile
   # We run neurodocker itself in a Docker container to avoid local installation requirements
   docker run --rm neurodocker:2.0.2 generate docker \
-             --base-image neurodebian:stretch-non-free \
+             --base-image debian:bullseye-slim \
              --pkg-manager apt \
              --arg DEBIAN_FRONTEND=noninteractive \
              --miniconda \
@@ -45,7 +45,7 @@ generate_singularity() {
   # Use neurodocker container to generate Singularity definition file
   # Most parameters are identical to Docker version for consistency
   docker run --rm neurodocker:2.0.2 generate singularity \
-             --base-image neurodebian:stretch-non-free \
+             --base-image debian:bullseye-slim \
              --pkg-manager apt \
              --arg DEBIAN_FRONTEND=noninteractive \
              --miniconda \
