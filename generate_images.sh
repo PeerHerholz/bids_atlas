@@ -26,7 +26,7 @@ generate_docker() {
                conda_install="python=3.10" \
                pip_install="nilearn pandas seedir" \
                env_name='bids_atlas' \
-               env_exists=true \
+               env_exists=false \
             --run-bash "source activate bids_atlas && conda install -c mrtrix3 mrtrix3" \
             --copy . /home/bids_atlas \
             --run-bash "source activate bids_atlas && cd /home/bids_atlas && pip install -e ." \
@@ -53,7 +53,7 @@ generate_singularity() {
                conda_install="python=3.10" \
                pip_install="nilearn pandas seedir" \
                env_name='bids_atlas' \
-               env_exists=true \
+               env_exists=false \
             --run-bash "source activate bids_atlas && conda install -c mrtrix3 mrtrix3" \
             --copy . /home/bids_atlas \
             --run-bash "source activate bids_atlas && cd /home/bids_atlas && pip install -e ." \
