@@ -1,4 +1,4 @@
-name: build docs
+name: tests
 
 on:
   # run it on push to the default repository branch
@@ -29,13 +29,16 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Install bids_atlas
       run: |
-        pip install ./
-    - name: Build the docs
+        pip install -e ./
+    - name: Debug structure
       run: |
-        cd docs && make clean html
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.6.1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/build/html
-        commit_message: ${{ github.event.head_commit.message }}
+        find . -name "test_*.py" -type f
+        ls -la bids_atlas/tests/
+    - name: Test code
+      shell: bash -l {0}
+      run: |
+        python -m pytest bids_atlas/tests/ -v
+    - name: Lint code
+      shell: bash -l {0}
+      run: |
+        flake8 bids_atlas/ --config=.flake8

@@ -82,3 +82,6 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+#example data
+bids_atlas_datasets/*
